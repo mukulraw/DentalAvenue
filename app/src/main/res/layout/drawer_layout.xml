@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="300dp"
+    android:background="#ffffff"
+    android:clickable="true"
+    >
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="#ffffff"
+        android:text="Username"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:drawableStart="@drawable/home"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:text="Home"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:drawableStart="@drawable/setting"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:text="Settings"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="My Profile"
+        android:drawableStart="@drawable/myprofile"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+
+        />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="#cdcdcd"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/logout"
+        android:drawableStart="@drawable/logout"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:text="Log out"
+        />
+
+
+</LinearLayout>
