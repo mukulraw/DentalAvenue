@@ -31,6 +31,19 @@
         android:text="Home"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/wish"
+        android:drawableStart="@drawable/wish"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:text="Wishlist"
+        />
+
+
+
 
     <TextView
         android:layout_width="match_parent"
@@ -58,6 +71,9 @@
     android:layout_width="match_parent"
     android:layout_height="1dp"
     android:background="#cdcdcd"/>
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

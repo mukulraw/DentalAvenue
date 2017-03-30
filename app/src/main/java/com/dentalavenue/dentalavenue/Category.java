@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import me.relex.circleindicator.CircleIndicator;
+
 
 public class Category extends Fragment{
     RecyclerView grid;
@@ -20,7 +22,7 @@ public class Category extends Fragment{
 
     ViewPager pager;
 
-
+CircleIndicator indicator;
 
 
     @Nullable
@@ -29,6 +31,8 @@ public class Category extends Fragment{
 
         View view = inflater.inflate(R.layout.category_layout , container , false);
 
+
+        indicator = (CircleIndicator) view.findViewById(R.id.circle);
 
 
         grid = (RecyclerView)view.findViewById(R.id.grid);
@@ -45,6 +49,8 @@ public class Category extends Fragment{
         MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
 
         pager.setAdapter(adapter);
+
+        indicator.setViewPager(pager);
 
         return view;
 
