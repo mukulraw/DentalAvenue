@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
 
     TextView wish;
-
+    TextView myprofile;
+    TextView cart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         wish = (TextView)findViewById(R.id.wish);
-
+        myprofile = (TextView) findViewById(R.id.change);
+        cart = (TextView) findViewById(R.id.cart);
 
 
         toolbar.setTitle("Dental Avenue");
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
         wish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,30 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+        myprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,Myprofile.class);
+                drawer.closeDrawer(GravityCompat.START);
+                startActivity(intent);
+            }
+        });
+
+
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, com.dentalavenue.dentalavenue.cart.class);
+                drawer.closeDrawer(GravityCompat.START);
+                startActivity(intent);
+            }
+        });
+
+
 
         TextView logout = (TextView)findViewById(R.id.logout);
 

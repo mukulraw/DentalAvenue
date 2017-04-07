@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dentalavenue.dentalavenue.Homepage">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4d8faf"
+        />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/da"
+        android:id="@+id/da"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ang"
+            android:id="@+id/ang"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ss"
+                android:id="@+id/ss"
+                android:layout_marginStart="10dp"
+                android:layout_alignParentStart="true"
+                />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/dia"
+                android:id="@+id/dia"
+                android:layout_alignParentEnd="true"
+                />
+
+
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:src="@drawable/sdii"
+            android:id="@+id/sdi"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/dmgg"
+            android:id="@+id/dmg"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
+
+
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:src="@drawable/major"
+            android:id="@+id/major"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/yr"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+
+        />
+
+
+</RelativeLayout>

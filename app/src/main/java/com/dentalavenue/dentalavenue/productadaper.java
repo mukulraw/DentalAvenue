@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by tvs on 3/28/2017.
+ * Created by tvs on yr/28/2017.
  */
 
 public class productadaper extends RecyclerView.Adapter<productadaper.myviewholder> {

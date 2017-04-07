@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f2f2f2"
+    tools:context="com.dentalavenue.dentalavenue.Myprofile">
+
+
+
+
+
+
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bar"
+            android:background="@color/colorPrimary">
+
+        </android.support.v7.widget.Toolbar>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile"
+            android:padding="18dp"
+            android:text="Update profile"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#880E4F"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit"
+            android:layout_gravity="end"
+            android:text="EDIT"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/dental"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/image"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Name"
+            android:textColor="@color/colorAccent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/text_back"
+            android:text="Name Surname"
+            android:id="@+id/surname"
+
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Email"
+            android:textColor="@color/colorAccent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/text_back"
+            android:text="nisha@technobrix.com"
+            android:id="@+id/email"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Ph.number"
+            android:textColor="@color/colorAccent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/text_back"
+            android:text="7678119291"
+            android:id="@+id/ph.no"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Orgization Name"
+            android:textColor="@color/colorAccent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/text_back"
+            android:text="Technobrix"
+            android:id="@+id/orgnization"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Qualification"
+            android:textColor="@color/colorAccent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/text_back"
+            android:text="Graduate"
+            android:id="@+id/qualification"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Address"
+            android:textColor="@color/colorAccent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/text_back"
+            android:text="ABCD"
+            android:id="@+id/address"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Address-2"
+            android:textColor="@color/colorAccent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/text_back"
+            android:text="nisha"
+            android:id="@+id/address_2"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/update"
+            android:padding="18dp"
+            android:text="Update profile"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#880E4F"
+            />
+
+    </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

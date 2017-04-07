@@ -41,6 +41,17 @@
         android:drawablePadding="10dp"
         android:text="Wishlist"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/cart"
+        android:drawableStart="@drawable/cart"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:text="Cart"
+        />
+
 
 
 
@@ -49,19 +60,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:drawableStart="@drawable/setting"
+        android:drawableStart="@drawable/ordewr"
         android:gravity="center_vertical"
         android:drawablePadding="10dp"
-        android:text="Settings"
+        android:text="My Orders"
         />
 
 
     <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" android:id="@+id/change"
+    android:text="My Profile"
+    android:drawableStart="@drawable/myprofile"
+    android:gravity="center_vertical"
+    android:drawablePadding="10dp"
+
+    />
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="My Profile"
-        android:drawableStart="@drawable/myprofile"
+        android:text="E Book"
+        android:drawableStart="@drawable/ebook"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Help Center"
+        android:drawableStart="@drawable/helpcenter"
         android:gravity="center_vertical"
         android:drawablePadding="10dp"
 
