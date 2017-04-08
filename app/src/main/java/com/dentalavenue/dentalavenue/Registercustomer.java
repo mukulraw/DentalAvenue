@@ -19,7 +19,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Registercustomer extends AppCompatActivity {
 
-    EditText userName , email , mobile , password , retype;
+    EditText dealer,company,cinno,vatno,complete,contact,email;
     Button create;
 
     @Override
@@ -27,11 +27,13 @@ public class Registercustomer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registercustomer);
 
-        userName = (EditText)findViewById(R.id.username);
+        dealer = (EditText)findViewById(R.id.dealer);
+        company = (EditText)findViewById(R.id.company);
         email = (EditText)findViewById(R.id.email);
-        mobile = (EditText)findViewById(R.id.mobile);
-        password = (EditText)findViewById(R.id.password);
-        retype = (EditText)findViewById(R.id.retype);
+        cinno = (EditText)findViewById(R.id.cinno);
+        vatno = (EditText)findViewById(R.id.vatno);
+        complete = (EditText)findViewById(R.id.complete);
+        contact = (EditText)findViewById(R.id.contact);
         create = (Button)findViewById(R.id.create);
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +48,7 @@ public class Registercustomer extends AppCompatActivity {
 
                 AllAPIs cr = retrofit.create(AllAPIs.class);
 
-                Call<registerBean> call = cr.register(userName.getText().toString() , "" , email.getText().toString() , mobile.getText().toString() , password.getText().toString() , "customer");
+                Call<registerBean> call = cr.register(dealer.getText().toString() , "" , email.getText().toString() , cinno.getText().toString() , vatno.getText().toString() , "customer");
 
                 call.enqueue(new Callback<registerBean>() {
                     @Override

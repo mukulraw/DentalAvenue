@@ -60,6 +60,21 @@
             android:layout_marginEnd="18dp"
             android:layout_marginTop="10dp"/>
 
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#808080"
+            android:hint="Registration No."
+            android:id="@+id/register"
+            android:padding="10dp"
+            android:background="@drawable/docter_back"
+            android:layout_marginStart="18dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="10dp"/>
+
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

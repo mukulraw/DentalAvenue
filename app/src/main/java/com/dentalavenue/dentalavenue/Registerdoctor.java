@@ -18,7 +18,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Registerdoctor extends AppCompatActivity {
 
-    EditText userName , email , mobile , password , retype;
+    EditText userName , email , mobile , password , retype,register;
     Button create;
 
 
@@ -29,6 +29,7 @@ public class Registerdoctor extends AppCompatActivity {
         setContentView(R.layout.activity_registerdoctor);
         userName = (EditText)findViewById(R.id.username);
         email = (EditText)findViewById(R.id.email);
+        register = (EditText) findViewById(R.id.register);
         mobile = (EditText)findViewById(R.id.mobile);
         password = (EditText)findViewById(R.id.password);
         retype = (EditText)findViewById(R.id.retype);

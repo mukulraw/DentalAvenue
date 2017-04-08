@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create Account"
+                android:text="Dealer's Registration Form"
                 android:paddingStart="18dp"
                 android:paddingEnd="18dp"
                 android:textSize="24sp"
@@ -34,7 +34,7 @@
 
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/dealer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -42,9 +42,73 @@
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/docter_back"
-                android:hint="Username"
+                android:hint="Dealer'S Name"
                 android:padding="10dp"
                 android:textColor="#808080" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:hint="Company Name"
+                android:id="@+id/company"
+                android:padding="10dp"
+                android:background="@drawable/docter_back"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:hint="CIN No."
+                android:padding="10dp"
+                android:id="@+id/cinno"
+                android:background="@drawable/docter_back"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:hint="VAT Reg.no."
+                android:padding="10dp"
+                android:id="@+id/vatno"
+                android:background="@drawable/docter_back"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:hint="Complete Address of Company"
+                android:id="@+id/complete"
+                android:padding="10dp"
+                android:background="@drawable/docter_back"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="10dp"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:hint="Contact No."
+                android:id="@+id/contact"
+                android:padding="10dp"
+                android:background="@drawable/docter_back"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -59,114 +123,7 @@
                 android:layout_marginEnd="18dp"
                 android:layout_marginTop="10dp"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#808080"
-                android:hint="Mobile No."
-                android:padding="10dp"
-                android:id="@+id/mobile"
-                android:background="@drawable/docter_back"
-                android:layout_marginStart="18dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="10dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#808080"
-                android:hint="Password"
-                android:padding="10dp"
-                android:id="@+id/password"
-                android:background="@drawable/docter_back"
-                android:layout_marginStart="18dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="10dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#808080"
-                android:hint="Re Type Password"
-                android:id="@+id/retype"
-                android:padding="10dp"
-                android:background="@drawable/docter_back"
-                android:layout_marginStart="18dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="10dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="--------  OR  --------"
-                android:padding="10dp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Facebook"
-                    android:textColor="#ffffff"
-                    android:drawableStart="@drawable/facebook"
-                    android:padding="10dp"
-                    android:gravity="center"
-                    android:drawablePadding="-15dp"
-                    android:background="@color/colorPrimary"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginEnd="9dp"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Google+"
-                    android:textColor="#ffffff"
-                    android:drawableStart="@drawable/google"
-                    android:padding="10dp"
-                    android:gravity="center"
-                    android:drawablePadding="-15dp"
-                    android:background="@color/red"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="18dp"
-                    />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="By Creating an account you are agree to our Term of Use and Privacy policy"
-                android:gravity="center"
-                android:paddingStart="18dp"
-                android:paddingEnd="18dp"
-                />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="CREATE ACCOUNT"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/create"
-                android:layout_marginBottom="10dp"
-                android:background="#E91E63"
-                android:textColor="#ffffff"
-
-                />
 
         </LinearLayout>
 

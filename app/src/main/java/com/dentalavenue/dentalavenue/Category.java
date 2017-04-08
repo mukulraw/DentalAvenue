@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.dentalavenue.dentalavenue.banner.Banner;
+import com.dentalavenue.dentalavenue.banner.bannerbean;
 import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -64,11 +67,7 @@ CircleIndicator indicator;
 
         pager = (ViewPager)view.findViewById(R.id.pager);
 
-        final MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
 
-        pager.setAdapter(adapter);
-
-        indicator.setViewPager(pager);
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -95,6 +94,24 @@ CircleIndicator indicator;
 
             }
         });
+        Call<bannerbean> call11 = cr.getBanner();
+
+        call11.enqueue(new Callback<bannerbean>() {
+            @Override
+            public void onResponse(Call<bannerbean> call, Response<bannerbean> response) {
+
+                MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager() , response.body().getBanner());
+                pager.setAdapter(adapter);
+                pager.setOffscreenPageLimit(adapter.getCount() - 1);
+                indicator.setViewPager(pager);
+
+            }
+
+            @Override
+            public void onFailure(Call<bannerbean> call, Throwable throwable) {
+
+            }
+        });
 
         return view;
 
@@ -106,30 +123,47 @@ CircleIndicator indicator;
 
     public class MyPagerAdapter extends FragmentStatePagerAdapter
     {
+        List<Banner> bannerList = new ArrayList<>();
 
-
-        public MyPagerAdapter(FragmentManager fm) {
+        public MyPagerAdapter(FragmentManager fm , List<Banner> bannerList) {
             super(fm);
+            this.bannerList = bannerList;
         }
 
         @Override
-        public Fragment getItem(int position) {
-            return new MyFrag();
+        public Fragment getItem(int position)
+        {
+            Banner item = bannerList.get(position);
+            MyFrag frag = new MyFrag();
+            Bundle b = new Bundle();
+            b.putString("url" , item.getImage());
+            frag.setArguments(b);
+            return frag;
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return bannerList.size();
         }
     }
 
 
     public static class MyFrag extends Fragment
     {
+        String url;
+        ImageView image;
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.image, container, false);
+
+            url = getArguments().getString("url");
+
+            image = (ImageView) view.findViewById(R.id.image);
+
+            ImageLoader loader = ImageLoader.getInstance();
+            loader.displayImage(url , image);
+
             return view;
         }
     }

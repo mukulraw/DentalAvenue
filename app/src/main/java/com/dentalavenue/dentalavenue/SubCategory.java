@@ -97,7 +97,7 @@ public class SubCategory extends Fragment
 
     public static class Pages extends Fragment
     {
-RecyclerView recycler;
+        RecyclerView recycler;
         GridLayoutManager manager;
 
         @Nullable

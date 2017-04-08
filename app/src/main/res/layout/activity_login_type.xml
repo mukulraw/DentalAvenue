@@ -54,7 +54,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login as a User"
+            android:text="Scale Team"
             android:background="#880E4F"
             android:textColor="#ffffff"
             android:layout_marginStart="18dp"

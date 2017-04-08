@@ -29,7 +29,6 @@ public class Homepage extends AppCompatActivity {
 
                 Intent intent = new Intent(Homepage.this , MainActivity.class);
                 startActivity(intent);
-                finish();
 
             }
         });

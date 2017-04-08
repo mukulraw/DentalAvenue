@@ -1,10 +1,12 @@
 package com.dentalavenue.dentalavenue;
 
 import com.dentalavenue.dentalavenue.RegisterPOJO.registerBean;
+import com.dentalavenue.dentalavenue.banner.bannerbean;
 import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
 import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
 
 import retrofit2.Call;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -22,5 +24,8 @@ public interface AllAPIs {
     @Multipart
     @POST("dental_avenue/app-api/category.php")
     Call<categoryBean> category(@Part("pid") String pid);
+
+    @GET("dental_avenue/app-api/banner.php")
+    Call<bannerbean> getBanner();
 
 }
