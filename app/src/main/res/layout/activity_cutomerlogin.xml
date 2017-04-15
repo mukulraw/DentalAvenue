@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/red"
+        android:src="@drawable/splash"
         android:scaleType="centerCrop"
         />
 
@@ -19,28 +19,30 @@
         android:orientation="vertical"
         >
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:background="#00000000">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="#00000000">
 
 
 
 
-    </android.support.v7.widget.Toolbar>
+        </android.support.v7.widget.Toolbar>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign In"
+            android:text="Login as Sales Team"
+            android:typeface="normal"
             android:paddingStart="28dp"
             android:paddingEnd="28dp"
             android:paddingBottom="18dp"
             android:paddingTop="18dp"
+            android:gravity="center"
             android:background="#00000000"
             android:textColor="#ffffff"
-            android:textSize="24sp"
+            android:textSize="20sp"
             />
 
 
@@ -54,23 +56,23 @@
             android:layout_marginEnd="10dp"
             >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign in with Facebook"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:drawableStart="@drawable/facebook"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:drawablePadding="-20dp"
-            android:background="@color/colorPrimary"
-            android:layout_marginTop="9dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginBottom="9dp"
-            android:layout_marginEnd="18dp"
-            android:id="@+id/facebook"
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign in with Facebook"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:drawableStart="@drawable/facebook"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:drawablePadding="-20dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="9dp"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/facebook"
+                />
 
 
             <TextView
@@ -85,9 +87,9 @@
                 android:padding="10dp"
                 android:background="#d62d20"
                 android:layout_marginTop="9dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/google"
                 />
 
@@ -95,14 +97,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="E Mail Id"
-                android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
                 android:layout_marginTop="9dp"
                 android:background="@drawable/edit_back"
                 android:padding="10dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/email"/>
 
 
@@ -110,14 +112,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:textColorHint="#ffffff"
                 android:background="@drawable/edit_back"
+                android:textColorHint="#ffffff"
                 android:padding="10dp"
                 android:textColor="#ffffff"
                 android:layout_marginTop="9dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/password"/>
 
 
@@ -127,13 +129,12 @@
                 android:layout_height="wrap_content"
                 android:text="I FORGOT MY PASSWORD"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
                 android:padding="10dp"
                 android:gravity="center"
                 android:layout_marginTop="9dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/forgot"
                 />
 
@@ -141,9 +142,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#d62d20"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/button_back"
                 android:text="SIGN IN"
                 android:textSize="20sp"
@@ -158,7 +159,6 @@
                 android:text="CREATE MY ACCOUNT"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 android:padding="10dp"
                 android:gravity="center"
                 android:layout_marginTop="9dp"

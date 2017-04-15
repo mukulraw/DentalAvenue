@@ -1,8 +1,10 @@
 package com.dentalavenue.dentalavenue;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,9 +26,7 @@ public class Cutomerlogin extends AppCompatActivity {
     TextView facebook,google,create,forgot;
     EditText email,password;
     Button sign;
-
-
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,15 @@ public class Cutomerlogin extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         sign = (Button) findViewById(R.id.sign);
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar.setTitle("Sign in");
+        toolbar.setTitleTextColor(Color.WHITE);
 
 
         create.setOnClickListener(new View.OnClickListener() {

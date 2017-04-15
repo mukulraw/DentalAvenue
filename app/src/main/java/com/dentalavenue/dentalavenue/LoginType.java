@@ -16,7 +16,7 @@ public class LoginType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_type);
         docter = (Button) findViewById(R.id.docter);
-        user = (Button) findViewById(R.id.user);
+        user = (Button) findViewById(R.id.sales);
 
         docter.setOnClickListener(new View.OnClickListener() {
             @Override
