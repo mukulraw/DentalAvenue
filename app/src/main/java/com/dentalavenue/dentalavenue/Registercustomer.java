@@ -10,15 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dentalavenue.dentalavenue.RegisterPOJO.registerBean;
 import com.dentalavenue.dentalavenue.cityPOJO.cityBean;
 import com.dentalavenue.dentalavenue.countryPOJO.countryBean;
+import com.dentalavenue.dentalavenue.registerDealerPOJO.registerDealerBean;
 import com.dentalavenue.dentalavenue.statePOJO.stateBean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +31,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Registercustomer extends AppCompatActivity {
 
-    EditText dealer,company,cinno,vatno,complete,contact,email;
+    EditText dealer,company,cinno,vatno,complete,contact,email , password , retypePassword , pin;
     Button create;
     ProgressBar progress;
     Spinner country , state , city;
@@ -62,7 +64,9 @@ public class Registercustomer extends AppCompatActivity {
         country = (Spinner)findViewById(R.id.country);
         state = (Spinner)findViewById(R.id.state);
         city = (Spinner)findViewById(R.id.city);
-
+        password = (EditText)findViewById(R.id.password);
+        retypePassword = (EditText)findViewById(R.id.retype);
+        pin = (EditText)findViewById(R.id.pin);
 
         progress.setVisibility(View.VISIBLE);
 
@@ -112,6 +116,8 @@ public class Registercustomer extends AppCompatActivity {
                     progress.setVisibility(View.VISIBLE);
 
                     Call<stateBean> call = cr.getState(countryId.get(position-1));
+
+                    countr = countryName.get(position);
 
                     call.enqueue(new Callback<stateBean>() {
                         @Override
@@ -165,6 +171,8 @@ public class Registercustomer extends AppCompatActivity {
 
                     Call<cityBean> call = cr.getCity(stateId.get(position-1));
 
+                    stat = stateName.get(position);
+
                     call.enqueue(new Callback<cityBean>() {
                         @Override
                         public void onResponse(Call<cityBean> call, Response<cityBean> response) {
@@ -196,7 +204,7 @@ public class Registercustomer extends AppCompatActivity {
                 }
                 else
                 {
-                    countr = "";
+                    stat = "";
                 }
 
             }
@@ -207,32 +215,172 @@ public class Registercustomer extends AppCompatActivity {
             }
         });
 
+        city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position>0)
+                {
+
+                    cit = cityName.get(position);
+                }
+                else
+                {
+                    cit = "";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                progress.setVisibility(View.VISIBLE);
+
+                String dealerName = dealer.getText().toString();
+                String emailId = email.getText().toString();
+                String ph = contact.getText().toString();
+                String compName = company.getText().toString();
+                String cin = cinno.getText().toString();
+                String vat = vatno.getText().toString();
+                String addr = complete.getText().toString();
+                String pass = password.getText().toString();
+                String retpass = retypePassword.getText().toString();
+                String pi = pin.getText().toString();
 
 
+                if (dealerName.length()>0)
+                {
 
-                /*Call<registerBean> call = cr.register(dealer.getText().toString() , "" , email.getText().toString() , cinno.getText().toString() , vatno.getText().toString() , "customer");
+                    if (emailId.length()>0)
+                    {
 
-                call.enqueue(new Callback<registerBean>() {
-                    @Override
-                    public void onResponse(Call<registerBean> call, Response<registerBean> response) {
-                        progress.setVisibility(View.GONE);
-                        Toast.makeText(Registercustomer.this , response.body().getRegister().get(0).getMessage() , Toast.LENGTH_SHORT).show();
-                        finish();
+                        if (ph.length()>0)
+                        {
+
+                            if (compName.length()>0)
+                            {
+
+                                if (cin.length()>0)
+                                {
+
+                                    if (vat.length()>0)
+                                    {
+
+                                        if (addr.length()>0)
+                                        {
+
+                                            if (countr.length()>0)
+                                            {
+
+                                                if (stat.length()>0)
+                                                {
+
+                                                    if (cit.length()>0)
+                                                    {
+
+                                                        if(pass.length()>0)
+                                                        {
+
+                                                            if (Objects.equals(retpass, pass))
+                                                            {
+
+                                                                progress.setVisibility(View.VISIBLE);
+
+                                                                Call<registerDealerBean> call = cr.registerSalesPerson(dealerName , "" , emailId , ph , pass , "dealer" , compName , cin , vat , countr , stat , cit , pi , addr , "");
+
+                                                                call.enqueue(new Callback<registerDealerBean>() {
+                                                                    @Override
+                                                                    public void onResponse(Call<registerDealerBean> call, Response<registerDealerBean> response) {
+                                                                        progress.setVisibility(View.GONE);
+                                                                        Toast.makeText(Registercustomer.this , response.body().getRegisterDealer().get(0).getMessage() , Toast.LENGTH_SHORT).show();
+                                                                        finish();
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onFailure(Call<registerDealerBean> call, Throwable throwable) {
+                                                                        progress.setVisibility(View.GONE);
+                                                                    }
+                                                                });
+
+
+                                                            }
+                                                            else
+                                                            {
+                                                                Toast.makeText(Registercustomer.this , "Password did not match" , Toast.LENGTH_SHORT).show();
+                                                            }
+
+                                                        }
+                                                        else
+                                                        {
+                                                            Toast.makeText(Registercustomer.this , "Invalid Password" , Toast.LENGTH_SHORT).show();
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        ((TextView)city.getChildAt(0)).setError("Invalid City");
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    ((TextView)state.getChildAt(0)).setError("Invalid State");
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                ((TextView)country.getChildAt(0)).setError("Invalid country");
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(Registercustomer.this , "Invalid Address" , Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(Registercustomer.this , "Invalid VAT Registration No." , Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                                else
+                                {
+                                    Toast.makeText(Registercustomer.this , "Invalid CIN" , Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                            else
+                            {
+                                Toast.makeText(Registercustomer.this , "Invalid Company Name" , Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                        else
+                        {
+                            Toast.makeText(Registercustomer.this , "Invalid Phone Number" , Toast.LENGTH_SHORT).show();
+                        }
 
                     }
-
-                    @Override
-                    public void onFailure(Call<registerBean> call, Throwable throwable) {
-                        progress.setVisibility(View.GONE);
+                    else
+                    {
+                        Toast.makeText(Registercustomer.this , "Invalid Email Id" , Toast.LENGTH_SHORT).show();
                     }
-                });
-*/
+
+                }
+                else
+                {
+                    Toast.makeText(Registercustomer.this , "Invalid Name" , Toast.LENGTH_SHORT).show();
+                }
+
+
+
 
 
             }

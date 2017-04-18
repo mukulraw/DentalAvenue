@@ -1,11 +1,12 @@
 package com.dentalavenue.dentalavenue;
 
-import com.dentalavenue.dentalavenue.RegisterPOJO.registerBean;
 import com.dentalavenue.dentalavenue.banner.bannerbean;
 import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
 import com.dentalavenue.dentalavenue.cityPOJO.cityBean;
 import com.dentalavenue.dentalavenue.countryPOJO.countryBean;
 import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
+import com.dentalavenue.dentalavenue.registerDealerPOJO.registerDealerBean;
+import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
 import com.dentalavenue.dentalavenue.statePOJO.stateBean;
 
 import retrofit2.Call;
@@ -18,11 +19,11 @@ public interface AllAPIs {
 
     @Multipart
     @POST("dental_avenue/app-api/register_doctor.php")
-    Call<registerBean> registerDoctor(@Part("fname") String fName, @Part("lname") String lName , @Part("email") String email , @Part("phone") String phone , @Part("password") String password , @Part("type") String type , @Part("registration_no") String regNo);
+    Call<registerDoctorBean> registerDoctor(@Part("fname") String fName, @Part("lname") String lName , @Part("email") String email , @Part("phone") String phone , @Part("password") String password , @Part("type") String type , @Part("registration_no") String regNo);
 
     @Multipart
     @POST("dental_avenue/app-api/register_dealer.php")
-    Call<registerBean> registerSalesPerson(@Part("fname") String fName, @Part("lname") String lName , @Part("email") String email , @Part("phone") String phone , @Part("password") String password , @Part("type") String type , @Part("company") String company , @Part("cin_no") String cinNo , @Part("vat_no") String vatNo , @Part("country") String country , @Part("state") String state , @Part("city") String city , @Part("pincode") String pinCode , @Part("address") String address , @Part("address2") String address2);
+    Call<registerDealerBean> registerSalesPerson(@Part("fname") String fName, @Part("lname") String lName , @Part("email") String email , @Part("phone") String phone , @Part("password") String password , @Part("type") String type , @Part("company") String company , @Part("cin_no") String cinNo , @Part("vat_no") String vatNo , @Part("country") String country , @Part("state") String state , @Part("city") String city , @Part("pincode") String pinCode , @Part("address") String address , @Part("address2") String address2);
 
     @Multipart
     @POST("dental_avenue/app-api/login.php")

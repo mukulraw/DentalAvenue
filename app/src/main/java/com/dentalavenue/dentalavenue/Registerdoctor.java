@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.dentalavenue.dentalavenue.RegisterPOJO.registerBean;
+import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -78,21 +78,21 @@ public class Registerdoctor extends AppCompatActivity {
 
                                         AllAPIs cr = retrofit.create(AllAPIs.class);
 
-                                        Call<registerBean> call = cr.registerDoctor(user , "" , emai , mob , pass , "doctor" , regis);
+                                        Call<registerDoctorBean> call = cr.registerDoctor(user , "" , emai , mob , pass , "doctor" , regis);
 
-                                        call.enqueue(new Callback<registerBean>() {
+                                        call.enqueue(new Callback<registerDoctorBean>() {
                                             @Override
-                                            public void onResponse(Call<registerBean> call, Response<registerBean> response) {
+                                            public void onResponse(Call<registerDoctorBean> call, Response<registerDoctorBean> response) {
 
                                                 progress.setVisibility(View.GONE);
 
-                                                Toast.makeText(Registerdoctor.this , response.body().getRegister().get(0).getMessage() , Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Registerdoctor.this , response.body().getRegisterDoctor().get(0).getMessage() , Toast.LENGTH_SHORT).show();
                                                 finish();
 
                                             }
 
                                             @Override
-                                            public void onFailure(Call<registerBean> call, Throwable throwable) {
+                                            public void onFailure(Call<registerDoctorBean> call, Throwable throwable) {
                                                 progress.setVisibility(View.GONE);
                                             }
                                         });

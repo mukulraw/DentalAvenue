@@ -53,6 +53,14 @@ public class Docterlogin extends AppCompatActivity {
         toolbar.setTitle("Sign in");
         toolbar.setTitleTextColor(Color.WHITE);
 
+        toolbar.setNavigationIcon(R.drawable.back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
