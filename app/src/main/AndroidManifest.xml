@@ -28,9 +28,11 @@
         <activity android:name=".LoginType" />
         <activity android:name=".Cutomerlogin" />
         <activity android:name=".Docterlogin" />
-        <activity android:name=".Registerdoctor" />
+        <activity android:name=".Registerdoctor"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity android:name=".Registercustomer" />
-        <activity android:name=".Homepage"></activity>
+        <activity android:name=".Homepage"/>
     </application>
 
 </manifest>

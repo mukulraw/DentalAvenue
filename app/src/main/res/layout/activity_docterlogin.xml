@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.dentalavenue.dentalavenue.Cutomerlogin">
 
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/splash"
         android:scaleType="centerCrop"
         />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
+            android:elevation="12dp"
             android:background="#00000000">
 
 
@@ -30,33 +34,32 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <TextView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign in as a Doctor"
-            android:typeface="normal"
-            android:paddingStart="28dp"
-            android:paddingEnd="28dp"
-            android:paddingBottom="18dp"
-            android:paddingTop="18dp"
-            android:gravity="center"
-            android:background="#00000000"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            />
+            android:layout_centerInParent="true"
+            >
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             >
 
-            <TextView
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign in with Facebook"
@@ -75,7 +78,7 @@
                 />
 
 
-            <TextView
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign in using Google+"
@@ -179,11 +182,18 @@
                 android:id="@+id/create"
                 />
 
-
-
         </LinearLayout>
 
+        </RelativeLayout>
+
+
+        </ScrollView>
+
+        </RelativeLayout>
+
     </LinearLayout>
+
+
 
     <ProgressBar
         android:layout_width="wrap_content"

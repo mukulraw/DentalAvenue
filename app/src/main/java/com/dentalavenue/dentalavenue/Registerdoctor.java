@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -86,8 +88,17 @@ public class Registerdoctor extends AppCompatActivity {
 
                                                 progress.setVisibility(View.GONE);
 
-                                                Toast.makeText(Registerdoctor.this , response.body().getRegisterDoctor().get(0).getMessage() , Toast.LENGTH_SHORT).show();
-                                                finish();
+                                                if (Objects.equals(response.body().getRegisterDoctor().get(0).getMessage(), "Registration Successfull."))
+                                                {
+                                                    Toast.makeText(Registerdoctor.this , "Registered Successfully" , Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                }
+                                                else if (Objects.equals(response.body().getRegisterDoctor().get(0).getMessage(), "User Already Exists."))
+                                                {
+                                                    Toast.makeText(Registerdoctor.this , "User Already Exists" , Toast.LENGTH_SHORT).show();
+                                                }
+
+
 
                                             }
 
@@ -100,37 +111,43 @@ public class Registerdoctor extends AppCompatActivity {
                                     }
                                     else
                                     {
-                                        Toast.makeText(Registerdoctor.this , "Password did not match" , Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(Registerdoctor.this , "Password did not match" , Toast.LENGTH_SHORT).show();
+                                        retype.setError("Password did not match");
                                     }
 
                                 }
                                 else
                                 {
-                                    Toast.makeText(Registerdoctor.this , "Invalid Password" , Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(Registerdoctor.this , "Invalid Password" , Toast.LENGTH_SHORT).show();
+                                    password.setError("Invalid Password");
                                 }
 
                             }
                             else
                             {
-                                Toast.makeText(Registerdoctor.this , "Invalid Mobile Number" , Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Registerdoctor.this , "Invalid Mobile Number" , Toast.LENGTH_SHORT).show();
+                                mobile.setError("Invalid Mobile Number");
                             }
 
                         }
                         else
                         {
-                            Toast.makeText(Registerdoctor.this , "Invalid Registration Number" , Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(Registerdoctor.this , "Invalid Registration Number" , Toast.LENGTH_SHORT).show();
+                            register.setError("Invalid Registration Number");
                         }
 
                     }
                     else
                     {
-                        Toast.makeText(Registerdoctor.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Registerdoctor.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
+                        email.setError("Invalid Email");
                     }
 
                 }
                 else
                 {
-                    Toast.makeText(Registerdoctor.this , "Invalid Username" , Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Registerdoctor.this , "Invalid Username" , Toast.LENGTH_SHORT).show();
+                    userName.setError("Invalid Username");
                 }
 
 

@@ -41,79 +41,85 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#808080"
-            android:hint="Username"
+            android:hint="Username *"
             android:id="@+id/username"
+            android:inputType="textPersonName"
             android:padding="10dp"
             android:background="@drawable/docter_back"
             android:layout_marginStart="18dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="18dp"
-            android:layout_marginTop="10dp"/>
+            />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#808080"
-            android:hint="Email id"
+            android:hint="Email id *"
             android:id="@+id/email"
             android:padding="10dp"
+            android:inputType="textEmailAddress"
             android:background="@drawable/docter_back"
             android:layout_marginStart="18dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="18dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
 
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#808080"
-            android:hint="Registration No."
+            android:hint="Registration No. *"
             android:id="@+id/register"
             android:padding="10dp"
+            android:inputType="number"
             android:background="@drawable/docter_back"
             android:layout_marginStart="18dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="18dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
 
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#808080"
-            android:hint="Mobile No."
+            android:hint="Mobile No. *"
             android:id="@+id/mobile"
+            android:inputType="phone"
             android:padding="10dp"
             android:background="@drawable/docter_back"
             android:layout_marginStart="18dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="18dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#808080"
-            android:hint="Password"
+            android:hint="Password *"
             android:id="@+id/password"
             android:padding="10dp"
+            android:inputType="textPassword"
             android:background="@drawable/docter_back"
             android:layout_marginStart="18dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="18dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#808080"
-            android:hint="Re Type Password"
+            android:hint="Re Type Password *"
             android:id="@+id/retype"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:background="@drawable/docter_back"
             android:layout_marginStart="18dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="18dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -122,6 +128,9 @@
             android:text="--------  OR  --------"
             android:padding="10dp"
             />
+
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -129,7 +138,7 @@
     android:weightSum="2">
 
 
-    <TextView
+    <Button
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
@@ -139,13 +148,13 @@
         android:padding="10dp"
         android:gravity="center"
         android:drawablePadding="-15dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/facebook_back"
         android:layout_marginStart="18dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="9dp"
         />
-    <TextView
+    <Button
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
@@ -155,7 +164,7 @@
         android:padding="10dp"
         android:gravity="center"
         android:drawablePadding="-15dp"
-        android:background="@color/red"
+        android:background="@drawable/google_back"
         android:layout_marginStart="9dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
@@ -180,10 +189,9 @@
             android:layout_marginEnd="18dp"
             android:id="@+id/create"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#E91E63"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/create_back"
             android:textColor="#ffffff"
-
             />
 
     </LinearLayout>

@@ -50,7 +50,7 @@ public class Docterlogin extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        toolbar.setTitle("Sign in");
+        toolbar.setTitle("Sign in as a Doctor");
         toolbar.setTitleTextColor(Color.WHITE);
 
         toolbar.setNavigationIcon(R.drawable.back);
@@ -67,8 +67,6 @@ public class Docterlogin extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Docterlogin.this, Registerdoctor.class);
                 startActivity(intent);
-
-
             }
         });
 
@@ -77,11 +75,8 @@ public class Docterlogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 String user = email.getText().toString();
                 String pass = password.getText().toString();
-
-
 
                 if (user.length()>0)
                 {
@@ -114,6 +109,7 @@ public class Docterlogin extends AppCompatActivity {
                                 {
                                     progress.setVisibility(View.GONE);
                                     Intent intent = new Intent(Docterlogin.this , Homepage.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -131,13 +127,15 @@ public class Docterlogin extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                        password.setError("Invalid details");
                     }
 
                 }
                 else
                 {
-                    Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                    email.setError("Invalid details");
                 }
 
 
@@ -146,4 +144,5 @@ public class Docterlogin extends AppCompatActivity {
         });
 
     }
+
     }
