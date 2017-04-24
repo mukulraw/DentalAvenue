@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -99,6 +100,8 @@ public class Docterlogin extends AppCompatActivity {
                         call.enqueue(new Callback<loginBean>() {
                             @Override
                             public void onResponse(Call<loginBean> call, Response<loginBean> response) {
+
+                                Log.d("adsadsa" , response.body().getLogin().get(0).getMessage());
 
                                 if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Username And Password Invalid."))
                                 {
