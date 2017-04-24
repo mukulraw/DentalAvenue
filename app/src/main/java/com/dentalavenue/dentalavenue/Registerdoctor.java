@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.dentalavenue.dentalavenue.RegisterPOJO.registerBean;
+import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,9 +21,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Registerdoctor extends AppCompatActivity {
 
-    EditText userName , email , mobile , password , retype,register;
+    EditText userName , email , mobile , password , retype , register;
     Button create;
-
+    ProgressBar progress;
 
 
     @Override
@@ -35,34 +38,120 @@ public class Registerdoctor extends AppCompatActivity {
         retype = (EditText)findViewById(R.id.retype);
         create = (Button)findViewById(R.id.create);
 
+        progress = (ProgressBar)findViewById(R.id.progress);
+
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://nationproducts.in/")
-                        .addConverterFactory(ScalarsConverterFactory.create())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
 
-                AllAPIs cr = retrofit.create(AllAPIs.class);
+                String user = userName.getText().toString();
+                String emai = email.getText().toString();
+                String regis = register.getText().toString();
+                String mob = mobile.getText().toString();
+                String pass = password.getText().toString();
+                String ret = retype.getText().toString();
 
-                Call<registerBean> call = cr.register(userName.getText().toString() , "" , email.getText().toString() , mobile.getText().toString() , password.getText().toString() , "doctor");
+                if (user.length()>0)
+                {
 
-                call.enqueue(new Callback<registerBean>() {
-                    @Override
-                    public void onResponse(Call<registerBean> call, Response<registerBean> response) {
+                    if (emai.length()>0)
+                    {
 
-                        Toast.makeText(Registerdoctor.this , response.body().getRegister().get(0).getMessage() , Toast.LENGTH_SHORT).show();
-                        finish();
+                        if (regis.length()>0)
+                        {
+
+                            if (mob.length()>0)
+                            {
+
+                                if (pass.length()>0)
+                                {
+
+                                    if (ret.length()>0)
+                                    {
+
+                                        progress.setVisibility(View.VISIBLE);
+
+                                        Retrofit retrofit = new Retrofit.Builder()
+                                                .baseUrl("http://nationproducts.in/")
+                                                .addConverterFactory(ScalarsConverterFactory.create())
+                                                .addConverterFactory(GsonConverterFactory.create())
+                                                .build();
+
+                                        AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                                        Call<registerDoctorBean> call = cr.registerDoctor(user , "" , emai , mob , pass , "doctor" , regis);
+
+                                        call.enqueue(new Callback<registerDoctorBean>() {
+                                            @Override
+                                            public void onResponse(Call<registerDoctorBean> call, Response<registerDoctorBean> response) {
+
+                                                progress.setVisibility(View.GONE);
+
+                                                if (Objects.equals(response.body().getRegisterDoctor().get(0).getMessage(), "Registration Successfull."))
+                                                {
+                                                    Toast.makeText(Registerdoctor.this , "Registered Successfully" , Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                }
+                                                else if (Objects.equals(response.body().getRegisterDoctor().get(0).getMessage(), "User Already Exists."))
+                                                {
+                                                    Toast.makeText(Registerdoctor.this , "User Already Exists" , Toast.LENGTH_SHORT).show();
+                                                }
+
+
+
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<registerDoctorBean> call, Throwable throwable) {
+                                                progress.setVisibility(View.GONE);
+                                            }
+                                        });
+
+                                    }
+                                    else
+                                    {
+                                        //Toast.makeText(Registerdoctor.this , "Password did not match" , Toast.LENGTH_SHORT).show();
+                                        retype.setError("Password did not match");
+                                    }
+
+                                }
+                                else
+                                {
+                                    //Toast.makeText(Registerdoctor.this , "Invalid Password" , Toast.LENGTH_SHORT).show();
+                                    password.setError("Invalid Password");
+                                }
+
+                            }
+                            else
+                            {
+                                //Toast.makeText(Registerdoctor.this , "Invalid Mobile Number" , Toast.LENGTH_SHORT).show();
+                                mobile.setError("Invalid Mobile Number");
+                            }
+
+                        }
+                        else
+                        {
+                            //Toast.makeText(Registerdoctor.this , "Invalid Registration Number" , Toast.LENGTH_SHORT).show();
+                            register.setError("Invalid Registration Number");
+                        }
 
                     }
-
-                    @Override
-                    public void onFailure(Call<registerBean> call, Throwable throwable) {
-
+                    else
+                    {
+                        //Toast.makeText(Registerdoctor.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
+                        email.setError("Invalid Email");
                     }
-                });
+
+                }
+                else
+                {
+                    //Toast.makeText(Registerdoctor.this , "Invalid Username" , Toast.LENGTH_SHORT).show();
+                    userName.setError("Invalid Username");
+                }
+
+
+
 
 
 

@@ -1,9 +1,10 @@
-package com.dentalavenue.dentalavenue.RegisterPOJO;
+package com.dentalavenue.dentalavenue.registerDoctorPOJO;
+
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Register {
+public class RegisterDoctor {
 
     @SerializedName("user_id")
     @Expose

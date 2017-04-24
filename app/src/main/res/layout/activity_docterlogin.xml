@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.dentalavenue.dentalavenue.Cutomerlogin">
 
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/blue"
+        android:src="@drawable/splash"
         android:scaleType="centerCrop"
         />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
+            android:elevation="12dp"
             android:background="#00000000">
 
 
@@ -30,31 +34,32 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <TextView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign In"
-            android:paddingStart="28dp"
-            android:paddingEnd="28dp"
-            android:paddingBottom="18dp"
-            android:paddingTop="18dp"
-            android:background="#00000000"
-            android:textColor="#ffffff"
-            android:textSize="24sp"
-            />
+            android:layout_centerInParent="true"
+            >
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             >
 
-            <TextView
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign in with Facebook"
@@ -64,16 +69,16 @@
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:drawablePadding="-20dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/facebook_back"
                 android:layout_marginTop="9dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/facebook"
                 />
 
 
-            <TextView
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign in using Google+"
@@ -83,13 +88,24 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:padding="10dp"
-                android:background="#d62d20"
+                android:background="@drawable/google_back"
                 android:layout_marginTop="9dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/google"
                 />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:text="--------  OR  --------"
+                android:padding="10dp"
+                />
+
 
             <EditText
                 android:layout_width="match_parent"
@@ -100,9 +116,9 @@
                 android:layout_marginTop="9dp"
                 android:background="@drawable/edit_back"
                 android:padding="10dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/email"/>
 
 
@@ -115,9 +131,9 @@
                 android:padding="10dp"
                 android:textColor="#ffffff"
                 android:layout_marginTop="9dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/password"/>
 
 
@@ -127,13 +143,12 @@
                 android:layout_height="wrap_content"
                 android:text="I FORGOT MY PASSWORD"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
                 android:padding="10dp"
                 android:gravity="center"
                 android:layout_marginTop="9dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="9dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="10dp"
                 android:id="@+id/forgot"
                 />
 
@@ -142,8 +157,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/button_back"
                 android:text="SIGN IN"
                 android:textSize="20sp"
@@ -158,7 +173,6 @@
                 android:text="CREATE MY ACCOUNT"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 android:padding="10dp"
                 android:gravity="center"
                 android:layout_marginTop="9dp"
@@ -168,9 +182,25 @@
                 android:id="@+id/create"
                 />
 
-
-
         </LinearLayout>
 
+        </RelativeLayout>
+
+
+        </ScrollView>
+
+        </RelativeLayout>
+
     </LinearLayout>
+
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress"
+        android:visibility="gone"
+        />
+
 </RelativeLayout>

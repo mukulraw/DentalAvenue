@@ -1,13 +1,17 @@
 package com.dentalavenue.dentalavenue;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
 
@@ -24,6 +28,8 @@ public class Docterlogin extends AppCompatActivity {
     TextView facebook,google,create,forgot;
     EditText email,password;
     Button sign;
+    Toolbar toolbar;
+    ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +42,31 @@ public class Docterlogin extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         sign = (Button) findViewById(R.id.sign);
+        progress = (ProgressBar)findViewById(R.id.progress);
 
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar.setTitle("Sign in as a Doctor");
+        toolbar.setTitleTextColor(Color.WHITE);
+
+        toolbar.setNavigationIcon(R.drawable.back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Docterlogin.this, Registerdoctor.class);
                 startActivity(intent);
-
-
             }
         });
 
@@ -53,38 +75,68 @@ public class Docterlogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://nationproducts.in/")
-                        .addConverterFactory(ScalarsConverterFactory.create())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+                String user = email.getText().toString();
+                String pass = password.getText().toString();
 
-                AllAPIs cr = retrofit.create(AllAPIs.class);
+                if (user.length()>0)
+                {
 
-                Call<loginBean> call = cr.login(email.getText().toString() , password.getText().toString() , "doctor");
+                    if (pass.length()>0)
+                    {
 
-                call.enqueue(new Callback<loginBean>() {
-                    @Override
-                    public void onResponse(Call<loginBean> call, Response<loginBean> response) {
+                        progress.setVisibility(View.VISIBLE);
 
-                        if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Username And Password Invalid."))
-                        {
-                            Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
-                        }
-                        else if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Login Successfull."))
-                        {
-                            Intent intent = new Intent(Docterlogin.this , Homepage.class);
-                            startActivity(intent);
-                            finish();
-                        }
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("http://nationproducts.in/")
+                                .addConverterFactory(ScalarsConverterFactory.create())
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                        Call<loginBean> call = cr.login(email.getText().toString() , password.getText().toString() , "doctor");
+
+                        call.enqueue(new Callback<loginBean>() {
+                            @Override
+                            public void onResponse(Call<loginBean> call, Response<loginBean> response) {
+
+                                if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Username And Password Invalid."))
+                                {
+                                    Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                                    progress.setVisibility(View.GONE);
+                                }
+                                else if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Login Successfull."))
+                                {
+                                    progress.setVisibility(View.GONE);
+                                    Intent intent = new Intent(Docterlogin.this , Homepage.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<loginBean> call, Throwable throwable) {
+
+                                progress.setVisibility(View.GONE);
+
+                            }
+                        });
 
                     }
-
-                    @Override
-                    public void onFailure(Call<loginBean> call, Throwable throwable) {
-
+                    else
+                    {
+                        //Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                        password.setError("Invalid details");
                     }
-                });
+
+                }
+                else
+                {
+                    //Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                    email.setError("Invalid details");
+                }
 
 
 
@@ -92,4 +144,5 @@ public class Docterlogin extends AppCompatActivity {
         });
 
     }
+
     }

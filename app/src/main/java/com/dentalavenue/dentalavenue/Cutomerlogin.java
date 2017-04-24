@@ -1,11 +1,14 @@
 package com.dentalavenue.dentalavenue;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,9 +27,8 @@ public class Cutomerlogin extends AppCompatActivity {
     TextView facebook,google,create,forgot;
     EditText email,password;
     Button sign;
-
-
-
+    Toolbar toolbar;
+    ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,15 @@ public class Cutomerlogin extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         sign = (Button) findViewById(R.id.sign);
+        progress = (ProgressBar)findViewById(R.id.progress);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar.setTitle("Sign in");
+        toolbar.setTitleTextColor(Color.WHITE);
 
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -55,38 +66,68 @@ public class Cutomerlogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://nationproducts.in/")
-                        .addConverterFactory(ScalarsConverterFactory.create())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
 
-                AllAPIs cr = retrofit.create(AllAPIs.class);
+                String user = email.getText().toString();
+                String pass = password.getText().toString();
 
-                Call<loginBean> call = cr.login(email.getText().toString() , password.getText().toString() , "customer");
 
-                call.enqueue(new Callback<loginBean>() {
-                    @Override
-                    public void onResponse(Call<loginBean> call, Response<loginBean> response) {
 
-                        if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Username And Password Invalid."))
-                        {
-                            Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
-                        }
-                        else if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Login Successfull."))
-                        {
-                            Intent intent = new Intent(Cutomerlogin.this , Homepage.class);
-                            startActivity(intent);
-                            finish();
-                        }
+                if (user.length()>0)
+                {
+
+                    if (pass.length()>0)
+                    {
+
+                        progress.setVisibility(View.VISIBLE);
+
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("http://nationproducts.in/")
+                                .addConverterFactory(ScalarsConverterFactory.create())
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                        Call<loginBean> call = cr.login(email.getText().toString() , password.getText().toString() , "customer");
+
+                        call.enqueue(new Callback<loginBean>() {
+                            @Override
+                            public void onResponse(Call<loginBean> call, Response<loginBean> response) {
+
+                                if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Username And Password Invalid."))
+                                {
+                                    Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                                    progress.setVisibility(View.GONE);
+                                }
+                                else if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Login Successfull."))
+                                {
+                                    progress.setVisibility(View.GONE);
+                                    Intent intent = new Intent(Cutomerlogin.this , Homepage.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<loginBean> call, Throwable throwable) {
+
+                                progress.setVisibility(View.GONE);
+
+                            }
+                        });
 
                     }
-
-                    @Override
-                    public void onFailure(Call<loginBean> call, Throwable throwable) {
-
+                    else
+                    {
+                        Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
                     }
-                });
+
+                }
+                else
+                {
+                    Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                }
 
 
 

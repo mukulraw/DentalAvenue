@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DentalAvenue.iml" filepath="$PROJECT_DIR$/DentalAvenue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/DentalAvenue.iml" filepath="$PROJECT_DIR$/.idea/DentalAvenue.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\DentalAvenue\DentalAvenue.iml" filepath="D:\AndroidStudioProjects\DentalAvenue\DentalAvenue.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

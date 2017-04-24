@@ -42,7 +42,7 @@ public class Category extends Fragment{
     ViewPager pager;
     List<com.dentalavenue.dentalavenue.categoryPOJO.Category> list;
 
-CircleIndicator indicator;
+    CircleIndicator indicator;
 
 
     @Nullable
