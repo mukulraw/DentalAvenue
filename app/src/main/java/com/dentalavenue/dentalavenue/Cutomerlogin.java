@@ -49,8 +49,17 @@ public class Cutomerlogin extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        toolbar.setTitle("Sign in");
+        toolbar.setTitle("Sign in as a Sales Person");
         toolbar.setTitleTextColor(Color.WHITE);
+
+        toolbar.setNavigationIcon(R.drawable.back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +112,7 @@ public class Cutomerlogin extends AppCompatActivity {
                                 {
                                     progress.setVisibility(View.GONE);
                                     Intent intent = new Intent(Cutomerlogin.this , Homepage.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -120,13 +130,15 @@ public class Cutomerlogin extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                        password.setError("Invalid details");
                     }
 
                 }
                 else
                 {
-                    Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Cutomerlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                    email.setError("Invalid details");
                 }
 
 
