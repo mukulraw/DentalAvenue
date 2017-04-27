@@ -1,6 +1,7 @@
 package com.dentalavenue.dentalavenue;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,11 +32,17 @@ public class Docterlogin extends AppCompatActivity {
     Button sign;
     Toolbar toolbar;
     ProgressBar progress;
+    SharedPreferences pref;
+    SharedPreferences.Editor edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_docterlogin);
+
+        pref = getSharedPreferences("mypref" , MODE_PRIVATE);
+        edit = pref.edit();
+
         facebook = (TextView) findViewById(R.id.facebook);
         google = (TextView) findViewById(R.id.google);
         create = (TextView) findViewById(R.id.create);
@@ -76,8 +83,8 @@ public class Docterlogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String user = email.getText().toString();
-                String pass = password.getText().toString();
+                final String user = email.getText().toString();
+                final String pass = password.getText().toString();
 
                 if (user.length()>0)
                 {
@@ -95,7 +102,7 @@ public class Docterlogin extends AppCompatActivity {
 
                         AllAPIs cr = retrofit.create(AllAPIs.class);
 
-                        Call<loginBean> call = cr.login(email.getText().toString() , password.getText().toString() , "doctor");
+                        Call<loginBean> call = cr.login(user , pass , "doctor");
 
                         call.enqueue(new Callback<loginBean>() {
                             @Override
@@ -111,8 +118,21 @@ public class Docterlogin extends AppCompatActivity {
                                 else if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Login Successfull."))
                                 {
                                     progress.setVisibility(View.GONE);
+
+                                    edit.putString("type" , "doctor");
+                                    edit.putString("user" , user);
+                                    edit.putString("pass" , pass);
+                                    edit.apply();
+
+                                    bean b = (bean)getApplicationContext();
+
+                                    b.name = response.body().getLogin().get(0).getFirstName();
+                                    b.userId = response.body().getLogin().get(0).getUserId();
+                                    b.email = response.body().getLogin().get(0).getUserEmail();
+
+
                                     Intent intent = new Intent(Docterlogin.this , Homepage.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                     finish();
                                 }

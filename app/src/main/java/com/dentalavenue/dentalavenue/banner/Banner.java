@@ -3,9 +3,6 @@ package com.dentalavenue.dentalavenue.banner;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by tvs on 4/8/2017.
- */
 
 public class Banner {
 

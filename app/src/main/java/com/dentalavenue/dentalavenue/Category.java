@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.dentalavenue.dentalavenue.banner.Banner;
 import com.dentalavenue.dentalavenue.banner.bannerbean;
 import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -161,8 +162,11 @@ public class Category extends Fragment{
 
             image = (ImageView) view.findViewById(R.id.image);
 
+            DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                    .cacheOnDisc(true).resetViewBeforeLoading(false).build();
+
             ImageLoader loader = ImageLoader.getInstance();
-            loader.displayImage(url , image);
+            loader.displayImage(url , image , options);
 
             return view;
         }
@@ -202,14 +206,42 @@ public class Category extends Fragment{
         @Override
         public void onBindViewHolder(myviewholder holder, int position) {
 
-            com.dentalavenue.dentalavenue.categoryPOJO.Category item = list.get(position);
+            final com.dentalavenue.dentalavenue.categoryPOJO.Category item = list.get(position);
 
             holder.text.setText(item.getCatName());
 
+            DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                    .cacheOnDisc(true).resetViewBeforeLoading(false).build();
+
             ImageLoader loader = ImageLoader.getInstance();
 
-            loader.displayImage(item.getCatImage() , holder.image);
+            loader.displayImage(item.getCatImage() , holder.image , options);
 
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    FragmentManager fm = ((MainActivity)context).getSupportFragmentManager();
+
+                    FragmentTransaction ft = fm.beginTransaction();
+
+                    SubCategory frag = new SubCategory();
+
+                    Bundle b = new Bundle();
+
+                    frag.setArguments(b);
+
+                    b.putString("name" , item.getCatName());
+                    b.putString("image" , item.getCatImage());
+                    b.putString("id" , item.getCatId());
+
+                    ft.replace(R.id.replace , frag);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+
+                }
+            });
 
         }
 
@@ -235,29 +267,7 @@ public class Category extends Fragment{
                 text =(TextView)itemView.findViewById(R.id.text);
 
 
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
 
-
-                        FragmentManager fm = ((MainActivity)context).getSupportFragmentManager();
-
-                        FragmentTransaction ft = fm.beginTransaction();
-
-                        SubCategory frag = new SubCategory();
-
-                        Bundle b = new Bundle();
-
-                        frag.setArguments(b);
-
-                        ft.replace(R.id.replace , frag);
-                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-                        ft.addToBackStack(null);
-                        ft.commit();
-
-
-                    }
-                });
 
 
 
