@@ -1,5 +1,6 @@
 package com.dentalavenue.dentalavenue;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -16,7 +18,17 @@ import android.widget.Toast;
 
 
 import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
+import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -27,23 +39,249 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Docterlogin extends AppCompatActivity {
-    TextView facebook,google,create,forgot;
+    TextView google,create,forgot;
     EditText email,password;
     Button sign;
+    Button facebook;
     Toolbar toolbar;
     ProgressBar progress;
     SharedPreferences pref;
     SharedPreferences.Editor edit;
+    CallbackManager mCallbackManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(this);
+        mCallbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(mCallbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        AccessToken accessToken = loginResult.getAccessToken();
+                        Profile profile = Profile.getCurrentProfile();
+
+                        final String user = profile.getId();
+                        final String pass = profile.getId();
+                        final String name = profile.getName();
+
+                        //progress.setVisibility(View.VISIBLE);
+
+                        //Toast.makeText(Docterlogin.this, profile.getName(), Toast.LENGTH_SHORT).show();
+
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("http://nationproducts.in/")
+                                .addConverterFactory(ScalarsConverterFactory.create())
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                        Call<loginBean> call = cr.login(user , pass , "doctor");
+
+                        call.enqueue(new Callback<loginBean>() {
+                            @Override
+                            public void onResponse(Call<loginBean> call, Response<loginBean> response) {
+
+                                Log.d("asdasdasd" , "1");
+                                //Log.d("adsadsa" , response.body().getLogin().get(0).getMessage());
+
+                                if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Username And Password Invalid."))
+                                {
+
+                                    Log.d("asdasdasd" , "2");
+
+                                    Dialog dialog = new Dialog(Docterlogin.this);
+                                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                    dialog.setCancelable(false);
+                                    dialog.setContentView(R.layout.social_dialog);
+                                    dialog.show();
+
+
+                                    final EditText reg = (EditText)dialog.findViewById(R.id.reg);
+                                    final EditText pho = (EditText)dialog.findViewById(R.id.phone);
+                                    TextView subm = (TextView)dialog.findViewById(R.id.submit);
+
+
+                                    final String re = reg.getText().toString();
+                                    final String ph = pho.getText().toString();
+
+                                    subm.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+
+                                            if (re.length()>0)
+                                            {
+                                                if (ph.length()>0)
+                                                {
+
+
+                                                    progress.setVisibility(View.VISIBLE);
+
+                                                    Retrofit retrofit = new Retrofit.Builder()
+                                                            .baseUrl("http://nationproducts.in/")
+                                                            .addConverterFactory(ScalarsConverterFactory.create())
+                                                            .addConverterFactory(GsonConverterFactory.create())
+                                                            .build();
+
+                                                    AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                                                    Call<registerDoctorBean> call = cr.registerDoctor(name , "" , user , ph , pass , "doctor" , re);
+
+                                                    call.enqueue(new Callback<registerDoctorBean>() {
+                                                        @Override
+                                                        public void onResponse(Call<registerDoctorBean> call, Response<registerDoctorBean> response) {
+
+                                                            progress.setVisibility(View.GONE);
+
+                                                            if (Objects.equals(response.body().getRegisterDoctor().get(0).getMessage(), "Registration Successfull."))
+                                                            {
+
+                                                                progress.setVisibility(View.VISIBLE);
+
+                                                                Retrofit retrofit = new Retrofit.Builder()
+                                                                        .baseUrl("http://nationproducts.in/")
+                                                                        .addConverterFactory(ScalarsConverterFactory.create())
+                                                                        .addConverterFactory(GsonConverterFactory.create())
+                                                                        .build();
+
+                                                                AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                                                                Call<loginBean> call2 = cr.login(user , pass , "doctor");
+
+                                                                call2.enqueue(new Callback<loginBean>() {
+                                                                    @Override
+                                                                    public void onResponse(Call<loginBean> call, Response<loginBean> response) {
+
+                                                                        Log.d("adsadsa" , response.body().getLogin().get(0).getMessage());
+
+                                                                        if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Username And Password Invalid."))
+                                                                        {
+                                                                            Toast.makeText(Docterlogin.this , "Invalid details" , Toast.LENGTH_SHORT).show();
+                                                                            progress.setVisibility(View.GONE);
+                                                                        }
+                                                                        else if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Login Successfull."))
+                                                                        {
+                                                                            progress.setVisibility(View.GONE);
+
+                                                                            edit.putString("type" , "doctor");
+                                                                            edit.putString("user" , user);
+                                                                            edit.putString("pass" , pass);
+                                                                            edit.apply();
+
+                                                                            bean b = (bean)getApplicationContext();
+
+                                                                            b.name = response.body().getLogin().get(0).getFirstName();
+                                                                            b.userId = response.body().getLogin().get(0).getUserId();
+                                                                            b.email = response.body().getLogin().get(0).getUserEmail();
+
+
+                                                                            Intent intent = new Intent(Docterlogin.this , Homepage.class);
+                                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                            startActivity(intent);
+                                                                            finish();
+                                                                        }
+
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onFailure(Call<loginBean> call, Throwable throwable) {
+
+                                                                        progress.setVisibility(View.GONE);
+
+                                                                    }
+                                                                });
+
+
+                                                            }
+                                                            else if (Objects.equals(response.body().getRegisterDoctor().get(0).getMessage(), "User Already Exists."))
+                                                            {
+                                                                Toast.makeText(Docterlogin.this , "User Already Exists" , Toast.LENGTH_SHORT).show();
+                                                            }
+
+                                                        }
+
+                                                        @Override
+                                                        public void onFailure(Call<registerDoctorBean> call, Throwable throwable) {
+                                                            progress.setVisibility(View.GONE);
+                                                        }
+                                                    });
+
+
+                                                }
+                                                else
+                                                {
+                                                    pho.setError("Invalid Phone Number");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                //Toast.makeText(Docterlogin.this , "Invalid Registration Number" , Toast.LENGTH_SHORT).show();
+                                                reg.setError("Invalid Registration Number");
+                                            }
+
+                                        }
+                                    });
+
+
+
+
+                                }
+                                else if (Objects.equals(response.body().getLogin().get(0).getMessage(), "Login Successfull."))
+                                {
+                                    progress.setVisibility(View.GONE);
+
+                                    //edit.putString("type" , "doctor");
+                                    //edit.putString("user" , user);
+                                    //edit.putString("pass" , pass);
+                                    //edit.apply();
+
+                                    bean b = (bean)getApplicationContext();
+
+                                    b.name = response.body().getLogin().get(0).getFirstName();
+                                    b.userId = response.body().getLogin().get(0).getUserId();
+                                    b.email = response.body().getLogin().get(0).getUserEmail();
+
+
+                                    Intent intent = new Intent(Docterlogin.this , Homepage.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<loginBean> call, Throwable throwable) {
+
+                                progress.setVisibility(View.GONE);
+
+                            }
+                        });
+
+
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(Docterlogin.this, "Login Cancel", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Toast.makeText(Docterlogin.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
         setContentView(R.layout.activity_docterlogin);
 
         pref = getSharedPreferences("mypref" , MODE_PRIVATE);
         edit = pref.edit();
 
-        facebook = (TextView) findViewById(R.id.facebook);
+        facebook = (Button) findViewById(R.id.facebook);
         google = (TextView) findViewById(R.id.google);
         create = (TextView) findViewById(R.id.create);
         forgot = (TextView) findViewById(R.id.forgot);
@@ -75,6 +313,14 @@ public class Docterlogin extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Docterlogin.this, Registerdoctor.class);
                 startActivity(intent);
+            }
+        });
+
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(Docterlogin.this , Arrays.asList("public_profile"));
             }
         });
 
@@ -164,8 +410,17 @@ public class Docterlogin extends AppCompatActivity {
 
 
             }
-        });
+});
 
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+
+
     }
+}

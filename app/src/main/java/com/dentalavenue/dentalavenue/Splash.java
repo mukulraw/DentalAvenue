@@ -2,8 +2,12 @@ package com.dentalavenue.dentalavenue;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -13,6 +17,8 @@ import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,6 +39,8 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+
 
         pref = getSharedPreferences("mypref" , MODE_PRIVATE);
 
@@ -163,4 +171,7 @@ public class Splash extends AppCompatActivity {
 
 
     }
+
+
+
 }
