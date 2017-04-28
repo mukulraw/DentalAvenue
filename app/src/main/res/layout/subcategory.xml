@@ -77,10 +77,14 @@
                     android:layout_height="match_parent"
                     android:id="@+id/image"
                     android:scaleType="centerCrop"
-                   android:src="@drawable/dental"
                     />
 
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/dark_shade"
+                    />
 
 
 
@@ -92,7 +96,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="Categories"
+                    android:id="@+id/label"
                     android:textAllCaps="true"
                     android:textColor="#fff" />
 

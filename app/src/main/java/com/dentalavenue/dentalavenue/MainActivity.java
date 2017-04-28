@@ -1,6 +1,7 @@
 package com.dentalavenue.dentalavenue;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,19 +26,28 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawer;
 
-    TextView wish;
+    TextView wish , logout;
     TextView myprofile;
     TextView cart;
+
+    SharedPreferences pref;
+    SharedPreferences.Editor edit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        pref = getSharedPreferences("mypref" , MODE_PRIVATE);
+        edit = pref.edit();
+
         toolbar= (Toolbar) findViewById(R.id.toolbar);
 
 
         wish = (TextView)findViewById(R.id.wish);
         myprofile = (TextView) findViewById(R.id.change);
         cart = (TextView) findViewById(R.id.cart);
+        logout = (TextView)findViewById(R.id.logout);
 
 
         toolbar.setTitle("Dental Avenue");
@@ -85,18 +97,36 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-        TextView logout = (TextView)findViewById(R.id.logout);
-
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getBaseContext() , "asdasd" , Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this , LoginType.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                edit.remove("user");
+                edit.remove("type");
+                edit.remove("pass");
+                edit.apply();
+
+
+                bean b = (bean)getApplicationContext();
+
+                b.name = "";
+                b.userId = "";
+                b.email = "";
+
+                startActivity(i);
+                finish();
 
             }
         });
+
+
+
+
+
+
 
 
         FragmentManager fm = getSupportFragmentManager();
