@@ -105,12 +105,14 @@ public class Docterlogin extends AppCompatActivity {
                                     TextView subm = (TextView)dialog.findViewById(R.id.submit);
 
 
-                                    final String re = reg.getText().toString();
-                                    final String ph = pho.getText().toString();
+
 
                                     subm.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+
+                                            final String re = reg.getText().toString();
+                                            final String ph = pho.getText().toString();
 
                                             if (re.length()>0)
                                             {
@@ -424,3 +426,5 @@ public class Docterlogin extends AppCompatActivity {
 
     }
 }
+
+

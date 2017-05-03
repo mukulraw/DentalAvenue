@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class Edit extends AppCompatActivity {
+public class
+Edit extends AppCompatActivity {
     ImageView imageview;
     TextView name,email,phone,organization,qualification,address,address2,update;
     android.support.v7.widget.Toolbar toolbar;

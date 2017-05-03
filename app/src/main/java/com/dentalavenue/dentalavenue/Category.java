@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dentalavenue.dentalavenue.banner.Banner;
@@ -42,8 +44,9 @@ public class Category extends Fragment{
     Dataadapter dataadapter;
     ViewPager pager;
     List<com.dentalavenue.dentalavenue.categoryPOJO.Category> list;
-
+RelativeLayout banner;
     CircleIndicator indicator;
+    ProgressBar progress;
 
 
     @Nullable
@@ -67,10 +70,11 @@ public class Category extends Fragment{
         grid.setAdapter(dataadapter);
 
         pager = (ViewPager)view.findViewById(R.id.pager);
+        progress = (ProgressBar) view.findViewById(R.id.progress);
 
+        progress.setVisibility(View.VISIBLE);
 
-
-
+        banner = (RelativeLayout) view.findViewById(R.id.banner);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://nationproducts.in/")
                 .addConverterFactory(ScalarsConverterFactory.create())
@@ -106,10 +110,16 @@ public class Category extends Fragment{
                 pager.setOffscreenPageLimit(adapter.getCount() - 1);
                 indicator.setViewPager(pager);
 
+                progress.setVisibility(View.GONE);
+                banner.setVisibility(View.VISIBLE);
+
             }
 
             @Override
             public void onFailure(Call<bannerbean> call, Throwable throwable) {
+
+                progress.setVisibility(View.GONE);
+
 
             }
         });
@@ -176,6 +186,7 @@ public class Category extends Fragment{
 
     public class Dataadapter extends RecyclerView.Adapter<Dataadapter.myviewholder>
     {
+
 
         List<com.dentalavenue.dentalavenue.categoryPOJO.Category> list = new ArrayList<>();
         Context context;

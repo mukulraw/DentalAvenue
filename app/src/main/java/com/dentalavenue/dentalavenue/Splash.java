@@ -40,8 +40,6 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-
         pref = getSharedPreferences("mypref" , MODE_PRIVATE);
 
         progress = (ProgressBar)findViewById(R.id.progress);
@@ -152,7 +150,7 @@ public class Splash extends AppCompatActivity {
         {
             Timer t = new Timer();
 
-            t.schedule(new TimerTask() {
+            t.schedule( new TimerTask() {
                 @Override
                 public void run() {
 
@@ -171,6 +169,11 @@ public class Splash extends AppCompatActivity {
 
 
     }
+
+
+
+
+
 
 
 

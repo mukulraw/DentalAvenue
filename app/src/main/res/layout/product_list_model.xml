@@ -19,7 +19,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/imageView"
-        android:src="@drawable/dental"
+        android:src="@drawable/dental_avenu"
         android:layout_margin="10dp"
         android:scaleType="centerCrop"
         />
@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="MICRO-MEGA-CONTRA-ANGLES"
                 android:textStyle="bold"
+                android:id="@+id/text1"
                 />
 
 
@@ -54,15 +55,17 @@
             android:gravity="center_vertical"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:id="@+id/text2"
             />
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:text="RS 375.00"/>
+            android:text="RS 375.00"
+            android:id="@+id/text3"/>
 
 
 
@@ -75,7 +78,8 @@
             android:rating="5"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/ratingBar" />
+            android:id="@+id/ratingBar"
+            />
 
 
 

@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.dentalavenue.dentalavenue.categoryPOJO.*;
 import com.dentalavenue.dentalavenue.categoryPOJO.Category;
+import com.dentalavenue.dentalavenue.productPOJO.ProductDetail;
+import com.dentalavenue.dentalavenue.productPOJO.productbean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -162,22 +164,59 @@ public class SubCategory extends Fragment
     {
         RecyclerView recycler;
         GridLayoutManager manager;
+        String id;
 
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.product_list , container , false);
 
+            id = getArguments().getString("id");
+
             recycler = (RecyclerView) view.findViewById(R.id.recycer);
             manager = new GridLayoutManager(getContext(),1);
-            productadaper productadaper =new productadaper(getContext());
+
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://nationproducts.in/")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            AllAPIs cr = retrofit.create(AllAPIs.class);
+
+
+            Call<productbean> call = cr.getProducts(id);
+
+            call.enqueue(new Callback<productbean>() {
+                @Override
+                public void onResponse(Call<productbean> call, Response<productbean> response) {
+
+                    List<ProductDetail> data = response.body().getProductDetail();
+
+                    productadaper productadaper = new productadaper(getContext() , data);
+
+                    recycler.setLayoutManager(manager);
+
+                    recycler.setAdapter(productadaper);
+
+                }
+
+                @Override
+                public void onFailure(Call<productbean> call, Throwable t) {
+
+                }
+            });
 
 
 
 
 
-            recycler.setLayoutManager(manager);
-            recycler.setAdapter(productadaper);
+
+
+
+
+
             return view;
 
 

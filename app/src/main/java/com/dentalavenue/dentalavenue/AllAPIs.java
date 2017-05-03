@@ -5,6 +5,7 @@ import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
 import com.dentalavenue.dentalavenue.cityPOJO.cityBean;
 import com.dentalavenue.dentalavenue.countryPOJO.countryBean;
 import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
+import com.dentalavenue.dentalavenue.productPOJO.productbean;
 import com.dentalavenue.dentalavenue.registerDealerPOJO.registerDealerBean;
 import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
 import com.dentalavenue.dentalavenue.statePOJO.stateBean;
@@ -46,4 +47,8 @@ public interface AllAPIs {
     @Multipart
     @POST("dental_avenue/app-api/city.php")
     Call<cityBean> getCity(@Part("state_id") String countryId);
+
+    @Multipart
+    @POST("dental_avenue/app-api/productbycatid.php")
+    Call<productbean> getProducts(@Part("cat_id") String cat_id);
 }
