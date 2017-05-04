@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "973787338620",
+    "project_id": "dental-avenue"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973787338620:android:b255f2e9d99c6ace",
+        "android_client_info": {
+          "package_name": "com.dentalavenue.dentalavenue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973787338620-dmfoqpb04o3b60hub55sn7rsuh1iuq88.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dentalavenue.dentalavenue",
+            "certificate_hash": "c4685813035a8e31a04e74a5aa55d71e8b16b0e7"
+          }
+        },
+        {
+          "client_id": "973787338620-spncrqb0buqbrd4k5gdv9l5tc6e35og9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7UZJhBBJfjDV173BBtBQIYZl4NWXFoeI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
