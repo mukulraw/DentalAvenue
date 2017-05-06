@@ -129,6 +129,7 @@ public class Cutomerlogin extends AppCompatActivity {
                                     b.name = response.body().getLogin().get(0).getFirstName();
                                     b.userId = response.body().getLogin().get(0).getUserId();
                                     b.email = response.body().getLogin().get(0).getUserEmail();
+                                    b.type = "dealer";
 
                                     Intent intent = new Intent(Cutomerlogin.this , Homepage.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

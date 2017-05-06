@@ -20,7 +20,7 @@ public class LoginType extends AppCompatActivity {
 
         docter.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+                public void onClick(View v) {
                 Intent intent = new Intent(LoginType.this,Docterlogin.class);
                 startActivity(intent);
             }

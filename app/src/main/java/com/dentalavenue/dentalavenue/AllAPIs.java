@@ -9,6 +9,7 @@ import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
 import com.dentalavenue.dentalavenue.productPOJO.productbean;
 import com.dentalavenue.dentalavenue.registerDealerPOJO.registerDealerBean;
 import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
+import com.dentalavenue.dentalavenue.singleProductPOJO.singleProductBean;
 import com.dentalavenue.dentalavenue.statePOJO.stateBean;
 
 import retrofit2.Call;
@@ -59,5 +60,9 @@ public interface AllAPIs {
     @Multipart
     @POST("dental_avenue/app-api/search.php")
     Call<productbean> search(@Part("keyword") String keyWord);
+
+    @Multipart
+    @POST("dental_avenue/app-api/productbyid.php")
+    Call<singleProductBean> getProductDetails(@Part("pid") String pId);
 
 }

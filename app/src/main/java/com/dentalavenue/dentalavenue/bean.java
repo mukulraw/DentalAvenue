@@ -8,5 +8,6 @@ public class bean extends Application{
     String userId = "";
     String name = "";
     String email = "";
+    String type = "";
 
 }

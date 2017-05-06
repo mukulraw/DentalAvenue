@@ -188,7 +188,7 @@ public class Docterlogin extends AppCompatActivity implements GoogleApiClient.On
                                                                             b.name = response.body().getLogin().get(0).getFirstName();
                                                                             b.userId = response.body().getLogin().get(0).getUserId();
                                                                             b.email = response.body().getLogin().get(0).getUserEmail();
-
+                                                                            b.type = "doctor";
 
                                                                             Intent intent = new Intent(Docterlogin.this , Homepage.class);
                                                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -255,6 +255,7 @@ public class Docterlogin extends AppCompatActivity implements GoogleApiClient.On
                                     b.name = response.body().getLogin().get(0).getFirstName();
                                     b.userId = response.body().getLogin().get(0).getUserId();
                                     b.email = response.body().getLogin().get(0).getUserEmail();
+                                    b.type = "doctor";
 
 
                                     Intent intent = new Intent(Docterlogin.this , Homepage.class);
@@ -415,6 +416,7 @@ public class Docterlogin extends AppCompatActivity implements GoogleApiClient.On
                                     b.name = response.body().getLogin().get(0).getFirstName();
                                     b.userId = response.body().getLogin().get(0).getUserId();
                                     b.email = response.body().getLogin().get(0).getUserEmail();
+                                    b.type = "doctor";
 
 
                                     Intent intent = new Intent(Docterlogin.this , Homepage.class);
@@ -594,6 +596,7 @@ public class Docterlogin extends AppCompatActivity implements GoogleApiClient.On
                                                                 b.name = response.body().getLogin().get(0).getFirstName();
                                                                 b.userId = response.body().getLogin().get(0).getUserId();
                                                                 b.email = response.body().getLogin().get(0).getUserEmail();
+                                                                b.type = "doctor";
 
 
                                                                 Intent intent = new Intent(Docterlogin.this , Homepage.class);
@@ -661,6 +664,7 @@ public class Docterlogin extends AppCompatActivity implements GoogleApiClient.On
                         b.name = response.body().getLogin().get(0).getFirstName();
                         b.userId = response.body().getLogin().get(0).getUserId();
                         b.email = response.body().getLogin().get(0).getUserEmail();
+                        b.type = "doctor";
 
 
                         Intent intent = new Intent(Docterlogin.this , Homepage.class);

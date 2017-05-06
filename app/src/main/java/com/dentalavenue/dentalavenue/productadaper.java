@@ -48,11 +48,11 @@ public class productadaper extends RecyclerView.Adapter<productadaper.myviewhold
     @Override
     public void onBindViewHolder(productadaper.myviewholder holder, int position) {
 
-        ProductDetail item = list.get(position);
+        final ProductDetail item = list.get(position);
 
         holder.name.setText(item.getProName());
-        holder.pass.setText(item.getQty().get(0).getProQty());
-        holder.roll.setText(item.getPrice().get(0).getPrice());
+        holder.pass.setText("Qty. - " + item.getQty().get(0).getProQty());
+        holder.roll.setText("Price - " + item.getPrice().get(0).getPrice());
 
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
                 .cacheOnDisc(true).resetViewBeforeLoading(false).build();
@@ -61,7 +61,27 @@ public class productadaper extends RecyclerView.Adapter<productadaper.myviewhold
 
         loader.displayImage(item.getProImage() , holder.image , options);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = ((MainActivity)context).getSupportFragmentManager();
 
+                FragmentTransaction ft = fm.beginTransaction();
+
+                Singleproduct frag = new Singleproduct();
+
+                Bundle b = new Bundle();
+
+                b.putString("id" , item.getProId());
+
+                frag.setArguments(b);
+
+                ft.replace(R.id.replace , frag);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
 
     }
 
@@ -88,25 +108,7 @@ public class productadaper extends RecyclerView.Adapter<productadaper.myviewhold
             rating= (RatingBar) itemView.findViewById(R.id.ratingBar);
 
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FragmentManager fm = ((MainActivity)context).getSupportFragmentManager();
 
-                    FragmentTransaction ft = fm.beginTransaction();
-
-                    Singleproduct frag = new Singleproduct();
-
-                    Bundle b = new Bundle();
-
-                    frag.setArguments(b);
-
-                    ft.replace(R.id.replace , frag);
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-                    ft.addToBackStack(null);
-                    ft.commit();
-                }
-            });
 
         }
     }
