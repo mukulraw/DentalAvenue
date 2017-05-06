@@ -1,5 +1,6 @@
 package com.dentalavenue.dentalavenue;
 
+import com.dentalavenue.dentalavenue.OfferPOJO.OfferBeann;
 import com.dentalavenue.dentalavenue.banner.bannerbean;
 import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
 import com.dentalavenue.dentalavenue.cityPOJO.cityBean;
@@ -51,4 +52,12 @@ public interface AllAPIs {
     @Multipart
     @POST("dental_avenue/app-api/productbycatid.php")
     Call<productbean> getProducts(@Part("cat_id") String cat_id);
+
+    @GET("dental_avenue/app-api/offer.php")
+    Call<OfferBeann> getCOffers();
+
+    @Multipart
+    @POST("dental_avenue/app-api/search.php")
+    Call<productbean> search(@Part("keyword") String keyWord);
+
 }

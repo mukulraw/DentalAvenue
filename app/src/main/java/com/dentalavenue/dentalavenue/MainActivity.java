@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawer;
 
-    TextView wish , logout;
+    TextView wish , logout , off;
     TextView myprofile;
     TextView cart;
 
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         myprofile = (TextView) findViewById(R.id.change);
         cart = (TextView) findViewById(R.id.cart);
         logout = (TextView)findViewById(R.id.logout);
+        off = (TextView)findViewById(R.id.offer);
 
 
         toolbar.setTitle("Dental Avenue");
@@ -74,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        off.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,Offers.class);
+                startActivity(i);
+            }
+        });
 
 
         myprofile.setOnClickListener(new View.OnClickListener() {

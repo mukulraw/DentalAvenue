@@ -4,6 +4,8 @@ package com.dentalavenue.dentalavenue.productPOJO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class ProductDetail {
     @SerializedName("pro_id")
     @Expose
@@ -22,16 +24,16 @@ public class ProductDetail {
     private String proImage;
     @SerializedName("price")
     @Expose
-    private String price;
+    private List<Price> price = null;
     @SerializedName("sale_price_to_doctor")
     @Expose
-    private String salePriceToDoctor;
+    private List<SalePriceToDoctor> salePriceToDoctor = null;
     @SerializedName("sale_price_to_dealer")
     @Expose
-    private String salePriceToDealer;
+    private List<SalePriceToDealer> salePriceToDealer = null;
     @SerializedName("qty")
     @Expose
-    private String qty;
+    private List<Qty> qty = null;
     @SerializedName("rating")
     @Expose
     private String rating;
@@ -79,35 +81,35 @@ public class ProductDetail {
         this.proImage = proImage;
     }
 
-    public String getPrice() {
+    public List<Price> getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(List<Price> price) {
         this.price = price;
     }
 
-    public String getSalePriceToDoctor() {
+    public List<SalePriceToDoctor> getSalePriceToDoctor() {
         return salePriceToDoctor;
     }
 
-    public void setSalePriceToDoctor(String salePriceToDoctor) {
+    public void setSalePriceToDoctor(List<SalePriceToDoctor> salePriceToDoctor) {
         this.salePriceToDoctor = salePriceToDoctor;
     }
 
-    public String getSalePriceToDealer() {
+    public List<SalePriceToDealer> getSalePriceToDealer() {
         return salePriceToDealer;
     }
 
-    public void setSalePriceToDealer(String salePriceToDealer) {
+    public void setSalePriceToDealer(List<SalePriceToDealer> salePriceToDealer) {
         this.salePriceToDealer = salePriceToDealer;
     }
 
-    public String getQty() {
+    public List<Qty> getQty() {
         return qty;
     }
 
-    public void setQty(String qty) {
+    public void setQty(List<Qty> qty) {
         this.qty = qty;
     }
 

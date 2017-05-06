@@ -14,6 +14,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.dentalavenue.dentalavenue.productPOJO.ProductDetail;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -50,12 +51,15 @@ public class productadaper extends RecyclerView.Adapter<productadaper.myviewhold
         ProductDetail item = list.get(position);
 
         holder.name.setText(item.getProName());
-        holder.pass.setText(item.getQty());
-        holder.roll.setText(item.getPrice());
+        holder.pass.setText(item.getQty().get(0).getProQty());
+        holder.roll.setText(item.getPrice().get(0).getPrice());
+
+        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                .cacheOnDisc(true).resetViewBeforeLoading(false).build();
 
         ImageLoader loader = ImageLoader.getInstance();
 
-        loader.displayImage(item.getProImage() , holder.image);
+        loader.displayImage(item.getProImage() , holder.image , options);
 
 
 

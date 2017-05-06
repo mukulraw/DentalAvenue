@@ -44,7 +44,7 @@ public class Category extends Fragment{
     Dataadapter dataadapter;
     ViewPager pager;
     List<com.dentalavenue.dentalavenue.categoryPOJO.Category> list;
-RelativeLayout banner;
+    RelativeLayout banner;
     CircleIndicator indicator;
     ProgressBar progress;
 

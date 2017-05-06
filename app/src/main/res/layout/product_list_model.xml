@@ -19,7 +19,6 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/imageView"
-        android:src="@drawable/dental_avenu"
         android:layout_margin="10dp"
         android:scaleType="centerCrop"
         />
@@ -39,7 +38,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
                 android:layout_height="wrap_content"
-                android:text="MICRO-MEGA-CONTRA-ANGLES"
                 android:textStyle="bold"
                 android:id="@+id/text1"
                 />
@@ -51,7 +49,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Productt Code:10010"
             android:gravity="center_vertical"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
@@ -64,7 +61,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:text="RS 375.00"
             android:id="@+id/text3"/>
 
 

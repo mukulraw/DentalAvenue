@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dentalavenue.dentalavenue.categoryPOJO.*;
@@ -39,14 +41,17 @@ public class SubCategory extends Fragment
     ViewPager pager;
     TextView label;
     ImageView image;
+    ProgressBar progress;
+    RelativeLayout relativeLayout;
     String catName , catImage , id;
     List<com.dentalavenue.dentalavenue.categoryPOJO.Category> list;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.subcategory , container , false);
+        final View view = inflater.inflate(R.layout.subcategory , container , false);
 
         catName = getArguments().getString("name");
         catImage = getArguments().getString("image");
@@ -56,6 +61,9 @@ public class SubCategory extends Fragment
         pager = (ViewPager) view.findViewById(R.id.pager);
         image = (ImageView) view.findViewById(R.id.image);
         label = (TextView)view.findViewById(R.id.label);
+        progress = (ProgressBar) view.findViewById(R.id.progress);
+
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.relative);
 
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
                 .cacheOnDisc(true).resetViewBeforeLoading(false).build();
@@ -67,6 +75,10 @@ public class SubCategory extends Fragment
         label.setText(catName);
 
         list = new ArrayList<>();
+
+        progress.setVisibility(View.VISIBLE);
+        relativeLayout.setVisibility(View.GONE);
+        tabs.setVisibility(View.GONE);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://nationproducts.in/")
@@ -96,6 +108,12 @@ public class SubCategory extends Fragment
                 tabs.setupWithViewPager(pager);
 
 
+                progress.setVisibility(View.GONE);
+                relativeLayout.setVisibility(View.VISIBLE);
+                tabs.setVisibility(View.VISIBLE);
+
+
+
                 for (int i = 0 ; i < tabs.getTabCount() ; i++)
                 {
                     tabs.getTabAt(i).setText(list.get(i).getCatName());
@@ -106,6 +124,8 @@ public class SubCategory extends Fragment
 
             @Override
             public void onFailure(Call<categoryBean> call, Throwable throwable) {
+
+                progress.setVisibility(View.GONE);
 
             }
         });
@@ -207,12 +227,6 @@ public class SubCategory extends Fragment
 
                 }
             });
-
-
-
-
-
-
 
 
 
