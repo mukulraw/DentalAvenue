@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.dentalavenue.dentalavenue.singleProductPOJO.singleProductBean;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.zip.Inflater;
 
 import retrofit2.Call;
@@ -79,7 +83,7 @@ public class Singleproduct extends Fragment {
 
 
 
-        image = (ImageView) view.findViewById(R.id.imageView);
+        image = (ImageView) view.findViewById(R.id.image);
 
         minus = (TextView) view.findViewById(R.id.minus);
         plus = (TextView) view.findViewById(R.id.plus);
@@ -120,20 +124,30 @@ public class Singleproduct extends Fragment {
 
                 bean b = (bean)getContext().getApplicationContext();
 
-                if (b.type == "doctor")
+                if (Objects.equals(b.type, "doctor"))
                 {
-
-                    price.setText(response.body().getProductDetail().get(0).getSalePriceToDoctor().get(0).getPrice());
-
+                    price.setText("Rs. " + response.body().getProductDetail().get(0).getSalePriceToDoctor().get(0).getPrice());
                 }
-                else if (b.type == "dealer")
+                else if (Objects.equals(b.type, "dealer"))
                 {
-
-                    price.setText(response.body().getProductDetail().get(0).getSalePriceToDealer().get(0).getPrice());
-
+                    price.setText("Rs. " + response.body().getProductDetail().get(0).getSalePriceToDealer().get(0).getPrice());
                 }
 
 
+                DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                        .cacheOnDisc(true).resetViewBeforeLoading(false).build();
+
+                ImageLoader loader = ImageLoader.getInstance();
+
+                loader.displayImage(response.body().getProductDetail().get(0).getProImage() , image);
+
+                name.setText(response.body().getProductDetail().get(0).getProName());
+
+                category.setText(response.body().getProductDetail().get(0).getCatName());
+                stock.setText(response.body().getProductDetail().get(0).getStock());
+                code.setText(response.body().getProductDetail().get(0).getProSku().get(0).getSku());
+                features.setText(Html.fromHtml(response.body().getProductDetail().get(0).getKeyFeatures()));
+                description.setText(response.body().getProductDetail().get(0).getProDetail());
 
 
 
