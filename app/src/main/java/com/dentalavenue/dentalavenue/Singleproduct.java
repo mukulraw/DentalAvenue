@@ -8,6 +8,8 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -122,16 +124,9 @@ public class Singleproduct extends Fragment {
             @Override
             public void onResponse(Call<singleProductBean> call, Response<singleProductBean> response) {
 
-                bean b = (bean)getContext().getApplicationContext();
 
-                if (Objects.equals(b.type, "doctor"))
-                {
-                    price.setText("Rs. " + response.body().getProductDetail().get(0).getSalePriceToDoctor().get(0).getPrice());
-                }
-                else if (Objects.equals(b.type, "dealer"))
-                {
-                    price.setText("Rs. " + response.body().getProductDetail().get(0).getSalePriceToDealer().get(0).getPrice());
-                }
+
+
 
 
                 DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
@@ -144,14 +139,43 @@ public class Singleproduct extends Fragment {
                 name.setText(response.body().getProductDetail().get(0).getProName());
 
                 category.setText(response.body().getProductDetail().get(0).getCatName());
-                stock.setText(response.body().getProductDetail().get(0).getStock());
-                code.setText(response.body().getProductDetail().get(0).getProSku().get(0).getSku());
+
+
                 features.setText(Html.fromHtml(response.body().getProductDetail().get(0).getKeyFeatures()));
                 description.setText(response.body().getProductDetail().get(0).getProDetail());
 
 
+                for(int i = 0 ; i < response.body().getProductDetail().get(0).getProSku().size() ; i++)
+                {
+                    skuId.add(i , response.body().getProductDetail().get(0).getProSku().get(i).getId());
+                    skuCode.add(i , response.body().getProductDetail().get(0).getProSku().get(i).getSku());
 
-            }
+                    priceId.add(i , response.body().getProductDetail().get(0).getPrice().get(i).getId());
+                    pricePrice.add(i , response.body().getProductDetail().get(0).getPrice().get(i).getPrice());
+
+                    doctorSpId.add(i , response.body().getProductDetail().get(0).getSalePriceToDoctor().get(i).getId());
+                    doctorSpPrice.add(i , response.body().getProductDetail().get(0).getSalePriceToDoctor().get(i).getPrice());
+
+                    dealerSpId.add(i , response.body().getProductDetail().get(0).getSalePriceToDealer().get(i).getId());
+                    dealerSpPrice.add(i , response.body().getProductDetail().get(0).getSalePriceToDealer().get(i).getPrice());
+
+                    qtyId.add(i , response.body().getProductDetail().get(0).getQty().get(i).getId());
+                    qtyQty.add(i , response.body().getProductDetail().get(0).getQty().get(i).getProQty());
+
+                    sizeId.add(i , response.body().getProductDetail().get(0).getSizeType().get(i).getId());
+                    sizePrice.add(i , response.body().getProductDetail().get(0).getSizeType().get(i).getPrice());
+
+                    offerDoctorId.add(i , response.body().getProductDetail().get(0).getOfferToDoctor().get(i).getId());
+                    offerDoctorPrice.add(i , response.body().getProductDetail().get(0).getOfferToDoctor().get(i).getProOffer());
+
+                }
+
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext() , R.layout.spinner_model , sizePrice);
+
+                spinner.setAdapter(adapter);
+
+           }
 
             @Override
             public void onFailure(Call<singleProductBean> call, Throwable throwable) {
@@ -160,6 +184,30 @@ public class Singleproduct extends Fragment {
         });
 
 
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                bean b = (bean)getContext().getApplicationContext();
+
+                stock.setText(qtyQty.get(position));
+                code.setText(skuCode.get(position));
+                if (Objects.equals(b.type, "doctor"))
+                {
+                    price.setText("Rs. " + doctorSpPrice.get(position));
+                }
+                else if (Objects.equals(b.type, "dealer"))
+                {
+                    price.setText("Rs. " + dealerSpPrice.get(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
