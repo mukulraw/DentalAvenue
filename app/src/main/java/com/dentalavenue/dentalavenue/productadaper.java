@@ -51,8 +51,16 @@ public class productadaper extends RecyclerView.Adapter<productadaper.myviewhold
         final ProductDetail item = list.get(position);
 
         holder.name.setText(item.getProName());
-        holder.pass.setText("Qty. - " + item.getQty().get(0).getProQty());
-        holder.roll.setText("Price - " + item.getPrice().get(0).getPrice());
+
+        try {
+            holder.pass.setText("Qty. - " + item.getQty().get(0).getProQty());
+            holder.roll.setText("Price - " + item.getPrice().get(0).getPrice());
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+
+
 
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
                 .cacheOnDisc(true).resetViewBeforeLoading(false).build();

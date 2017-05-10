@@ -58,6 +58,9 @@ public class Category extends Fragment{
 
         indicator = (CircleIndicator) view.findViewById(R.id.circle);
 
+        bean b = (bean)getContext().getApplicationContext();
+
+        Log.d("asdasd" , b.userId);
 
         grid = (RecyclerView)view.findViewById(R.id.grid);
         manager = new GridLayoutManager(getContext() , 2);

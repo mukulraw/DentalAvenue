@@ -134,7 +134,7 @@ public class Singleproduct extends Fragment {
 
                 ImageLoader loader = ImageLoader.getInstance();
 
-                loader.displayImage(response.body().getProductDetail().get(0).getProImage() , image);
+                loader.displayImage(response.body().getProductDetail().get(0).getProImage() , image , options);
 
                 name.setText(response.body().getProductDetail().get(0).getProName());
 

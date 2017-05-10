@@ -10,9 +10,7 @@ import android.widget.TextView;
 
 import static android.view.View.*;
 
-/**
- * Created by tvs on 3/30/2017.
- */
+
 
 public class Wishadapter extends RecyclerView.Adapter<Wishadapter.myviewholder> {
 
