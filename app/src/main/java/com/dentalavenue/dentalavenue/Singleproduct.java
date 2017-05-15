@@ -13,10 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dentalavenue.dentalavenue.addCartPOJO.addCartBean;
+import com.dentalavenue.dentalavenue.addWishlistPOJO.addWishlistBean;
 import com.dentalavenue.dentalavenue.singleProductPOJO.singleProductBean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -43,6 +47,7 @@ public class Singleproduct extends Fragment {
     TextView price;
     TextView number;
     Button cart;
+    ProgressBar progress;
     TextView name;
     RatingBar rating;
     TextView wishlist;
@@ -61,12 +66,15 @@ public class Singleproduct extends Fragment {
     List<String> sizeId , sizePrice;
     List<String> offerDoctorId , offerDoctorPrice;
 
+    String size , sku , pri , salePrice , offerDoctor , offerDealer = "";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.single_layout, container, false);
+
+        progress = (ProgressBar)view.findViewById(R.id.progress);
 
         skuId = new ArrayList<>();
         skuCode = new ArrayList<>();
@@ -108,6 +116,7 @@ public class Singleproduct extends Fragment {
 
 
 
+        progress.setVisibility(View.VISIBLE);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://nationproducts.in/")
@@ -175,14 +184,55 @@ public class Singleproduct extends Fragment {
 
                 spinner.setAdapter(adapter);
 
+
+                progress.setVisibility(View.GONE);
+
+
            }
 
             @Override
             public void onFailure(Call<singleProductBean> call, Throwable throwable) {
-
+                progress.setVisibility(View.GONE);
             }
         });
 
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                progress.setVisibility(View.VISIBLE);
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://nationproducts.in/")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                bean b = (bean)getContext().getApplicationContext();
+
+                Call<addCartBean> call = cr.addToCart(b.userId , id , size , sku , pri , salePrice , offerDoctor , offerDealer , number.getText().toString() , "doctor");
+
+                call.enqueue(new Callback<addCartBean>() {
+                    @Override
+                    public void onResponse(Call<addCartBean> call, Response<addCartBean> response) {
+
+                        Toast.makeText(getContext() , response.body().getAddToCart().get(0).getMessage() , Toast.LENGTH_SHORT).show();
+
+                        progress.setVisibility(View.GONE);
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<addCartBean> call, Throwable throwable) {
+                        progress.setVisibility(View.GONE);
+                    }
+                });
+
+            }
+        });
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -190,6 +240,12 @@ public class Singleproduct extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 bean b = (bean)getContext().getApplicationContext();
+
+                size = sizeId.get(position);
+                sku = skuId.get(position);
+                pri = priceId.get(position);
+                salePrice = doctorSpPrice.get(position);
+                offerDoctor = offerDoctorPrice.get(position);
 
                 stock.setText(qtyQty.get(position));
                 code.setText(skuCode.get(position));
@@ -209,6 +265,43 @@ public class Singleproduct extends Fragment {
             }
         });
 
+
+        wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                progress.setVisibility(View.VISIBLE);
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://nationproducts.in/")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                AllAPIs cr = retrofit.create(AllAPIs.class);
+
+                bean b = (bean)getContext().getApplicationContext();
+
+                Call<addWishlistBean> call = cr.addWishlist(b.userId , id);
+
+                call.enqueue(new Callback<addWishlistBean>() {
+                    @Override
+                    public void onResponse(Call<addWishlistBean> call, Response<addWishlistBean> response) {
+
+                        Toast.makeText(getContext() , response.body().getAddWishlist().get(0).getMessage() , Toast.LENGTH_SHORT).show();
+
+                        progress.setVisibility(View.GONE);
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<addWishlistBean> call, Throwable throwable) {
+                        progress.setVisibility(View.GONE);
+                    }
+                });
+
+            }
+        });
 
 
         minus.setOnClickListener(new View.OnClickListener() {

@@ -110,12 +110,12 @@
 
                                 <TextView
                                     android:id="@+id/plus"
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:gravity="center"
-                                    android:paddingEnd="5dp"
-                                    android:paddingStart="5dp"
+                                    android:paddingEnd="10dp"
+                                    android:paddingStart="10dp"
                                     android:text="+"
                                     android:textSize="20sp" />
 
@@ -152,9 +152,11 @@
 
 
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
 
 
                     <TextView
@@ -179,7 +181,7 @@
 
 
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
 
@@ -460,5 +462,12 @@
         </LinearLayout>
     </ScrollView>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.dentalavenue.dentalavenue;
 
 import com.dentalavenue.dentalavenue.OfferPOJO.OfferBeann;
+import com.dentalavenue.dentalavenue.addCartPOJO.addCartBean;
+import com.dentalavenue.dentalavenue.addWishlistPOJO.addWishlistBean;
 import com.dentalavenue.dentalavenue.banner.bannerbean;
 import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
 import com.dentalavenue.dentalavenue.cityPOJO.cityBean;
@@ -64,5 +66,13 @@ public interface AllAPIs {
     @Multipart
     @POST("dental_avenue/app-api/productbyid.php")
     Call<singleProductBean> getProductDetails(@Part("pid") String pId);
+
+    @Multipart
+    @POST("dental_avenue/app-api/add-to-cart.php")
+    Call<addCartBean> addToCart(@Part("user_id") String userId , @Part("product_id") String productId , @Part("size") String Size , @Part("sku") String SKU , @Part("price") String Price , @Part("sale_price") String salePrice , @Part("offer_doctor") String offerDoctor , @Part("offer_dealer") String offerDealer , @Part("qty") String Qty , @Part("user_type") String userType);
+
+    @Multipart
+    @POST("dental_avenue/app-api/add_whishlist.php")
+    Call<addWishlistBean> addWishlist(@Part("userid") String userId , @Part("pid") String pId);
 
 }
