@@ -18,7 +18,7 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:id="@+id/imageView"
+            android:id="@+id/image"
             android:src="@drawable/dental"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
@@ -39,6 +39,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
                 android:layout_height="wrap_content"
+                android:id="@+id/name"
                 android:text="Combo-1"
                 android:textStyle="bold"
                 />
@@ -51,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SKU:Bikji-Combo 1"
+                android:id="@+id/sku"
                 android:gravity="center_vertical"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
@@ -61,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:id="@+id/price"
                 android:layout_alignParentStart="true"
                 android:text="Rs 190.00"/>
 
@@ -108,6 +111,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
+                android:id="@+id/delete"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/delete"
                 />

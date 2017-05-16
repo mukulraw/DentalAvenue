@@ -75,6 +75,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this , cart.class);
+                drawer.closeDrawer(GravityCompat.START);
+                startActivity(intent);
+
+            }
+        });
+
 
         off.setOnClickListener(new View.OnClickListener() {
             @Override

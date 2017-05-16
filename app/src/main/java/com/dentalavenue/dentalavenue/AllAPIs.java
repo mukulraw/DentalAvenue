@@ -13,6 +13,7 @@ import com.dentalavenue.dentalavenue.registerDealerPOJO.registerDealerBean;
 import com.dentalavenue.dentalavenue.registerDoctorPOJO.registerDoctorBean;
 import com.dentalavenue.dentalavenue.singleProductPOJO.singleProductBean;
 import com.dentalavenue.dentalavenue.statePOJO.stateBean;
+import com.dentalavenue.dentalavenue.viewCartPOJO.viewCartBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -74,5 +75,9 @@ public interface AllAPIs {
     @Multipart
     @POST("dental_avenue/app-api/add_whishlist.php")
     Call<addWishlistBean> addWishlist(@Part("userid") String userId , @Part("pid") String pId);
+
+    @Multipart
+    @POST("dental_avenue/app-api/cart_data.php")
+    Call<viewCartBean> viewCart(@Part("userid") String userId);
 
 }
