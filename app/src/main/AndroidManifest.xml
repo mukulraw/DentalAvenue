@@ -9,10 +9,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         android:largeHeap="true"
-        >
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -54,7 +53,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".Homepage" />
         <activity android:name=".Offers" />
-        <activity android:name=".Search"></activity>
+        <activity android:name=".Search" />
+        <activity android:name=".Rating"></activity>
     </application>
 
 </manifest>

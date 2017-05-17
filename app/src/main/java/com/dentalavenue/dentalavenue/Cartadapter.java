@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,7 +45,7 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.myviewholder> 
 
 
     @Override
-    public void onBindViewHolder(Cartadapter.myviewholder holder, int position) {
+    public void onBindViewHolder(final Cartadapter.myviewholder holder, int position) {
 
         CartDatum item = list.get(position);
 
@@ -54,6 +55,42 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.myviewholder> 
         ImageLoader loader = ImageLoader.getInstance();
 
         //loader.displayImage(item.get);
+
+        holder.name.setText(item.getProductName());
+        holder.sku.setText(item.getProductSku());
+        holder.price.setText(item.getSalePrice());
+        holder.number.setText(item.getQty());
+
+
+
+        holder.minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String num = holder.number.getText().toString();
+                int n = Integer.parseInt(num);
+
+                if (n>1)
+                {
+                    n--;
+                    holder.number.setText(String.valueOf(n));
+                }
+
+            }
+        });
+
+        holder.plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String num = holder.number.getText().toString();
+                int n = Integer.parseInt(num);
+
+                n++;
+                holder.number.setText(String.valueOf(n));
+
+            }
+        });
+
 
 
     }
@@ -67,6 +104,8 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.myviewholder> 
 
         ImageView image;
         TextView name , sku , price;
+        TextView plus , minus;
+        TextView number;
 
 
         public myviewholder(View itemView) {
@@ -76,6 +115,9 @@ public class Cartadapter extends RecyclerView.Adapter<Cartadapter.myviewholder> 
             name = (TextView)itemView.findViewById(R.id.name);
             sku = (TextView)itemView.findViewById(R.id.sku);
             price = (TextView)itemView.findViewById(R.id.price);
+            plus = (TextView) itemView.findViewById(R.id.plus);
+            minus = (TextView) itemView.findViewById(R.id.minus);
+            number = (TextView)itemView.findViewById(R.id.number);
 
         }
 
