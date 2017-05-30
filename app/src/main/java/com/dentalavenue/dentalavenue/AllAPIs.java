@@ -5,6 +5,8 @@ import com.dentalavenue.dentalavenue.addCartPOJO.addCartBean;
 import com.dentalavenue.dentalavenue.addWishlistPOJO.addWishlistBean;
 import com.dentalavenue.dentalavenue.banner.bannerbean;
 import com.dentalavenue.dentalavenue.categoryPOJO.categoryBean;
+import com.dentalavenue.dentalavenue.changePassPOJO.ChangePass;
+import com.dentalavenue.dentalavenue.changePassPOJO.PassChange;
 import com.dentalavenue.dentalavenue.cityPOJO.cityBean;
 import com.dentalavenue.dentalavenue.countryPOJO.countryBean;
 import com.dentalavenue.dentalavenue.loginPOJO.loginBean;
@@ -84,5 +86,12 @@ public interface AllAPIs {
     @Multipart
     @POST("dental_avenue/app-api/view_rating.php")
     Call<viewRatingBean> viewRating(@Part("proid") String proId);
+
+
+    @Multipart
+    @POST("dental_avenue/app-api/password_change.php")
+    Call<ChangePass> changePass(@Part("old_pass") String oldPass, @Part("new_pass") String newPass, @Part("userid") String userId);
+
+
 
 }

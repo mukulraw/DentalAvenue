@@ -154,23 +154,20 @@
                 />
 
             <EditText
+                android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:textColor="#ffffff"
-                android:hint="Password"
                 android:background="@drawable/edit_back"
-                android:textColorHint="#808080"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingTop="10dp"
+                android:hint="Password"
                 android:paddingBottom="10dp"
-                />
-
-
-
-
+                android:inputType="textPassword"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingTop="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#808080" />
 
 
         </LinearLayout>

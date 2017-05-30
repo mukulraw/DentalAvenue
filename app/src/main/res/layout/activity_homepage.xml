@@ -35,7 +35,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="70dp"
-            android:src="@drawable/angel"
+            android:src="@drawable/da"
             android:id="@+id/ang"
             android:layout_gravity="center_horizontal"
             />
@@ -50,7 +50,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="70dp"
-                android:src="@drawable/ss"
+                android:src="@drawable/da"
                 android:id="@+id/ss"
                 android:layout_marginStart="10dp"
                 android:layout_alignParentStart="true"
@@ -60,7 +60,7 @@
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/dia"
+                android:src="@drawable/da"
                 android:id="@+id/dia"
                 android:layout_alignParentEnd="true"
                 />
@@ -81,7 +81,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="70dp"
-            android:src="@drawable/sdii"
+            android:src="@drawable/da"
             android:id="@+id/sdi"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
@@ -90,7 +90,7 @@
             android:layout_width="100dp"
             android:layout_height="70dp"
             android:layout_marginEnd="14dp"
-            android:src="@drawable/dmgg"
+            android:src="@drawable/da"
             android:id="@+id/dmg"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
@@ -103,7 +103,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="70dp"
-            android:src="@drawable/major"
+            android:src="@drawable/da"
             android:id="@+id/major"
             android:layout_gravity="center_horizontal"
             />

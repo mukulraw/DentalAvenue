@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DentalAvenue.iml" filepath="$PROJECT_DIR$/DentalAvenue.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DentalAvenue.iml" filepath="$PROJECT_DIR$/.idea/DentalAvenue.iml" />
-      <module fileurl="file://C:\Users\tvs\AndroidStudioProjects\DentalAvenue\.idea\DentalAvenue.iml" filepath="C:\Users\tvs\AndroidStudioProjects\DentalAvenue\.idea\DentalAvenue.iml" />
-      <module fileurl="file://C:\Users\tvs\Downloads\marwadiKhana-master (1)\DentalAvenue\DentalAvenue.iml" filepath="C:\Users\tvs\Downloads\marwadiKhana-master (1)\DentalAvenue\DentalAvenue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../tvs/AndroidStudioProjects/DentalAvenue/.idea/DentalAvenue.iml" filepath="$PROJECT_DIR$/../../../tvs/AndroidStudioProjects/DentalAvenue/.idea/DentalAvenue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../tvs/Downloads/marwadiKhana-master (1)/DentalAvenue/DentalAvenue.iml" filepath="$PROJECT_DIR$/../../../tvs/Downloads/marwadiKhana-master (1)/DentalAvenue/DentalAvenue.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

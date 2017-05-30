@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -453,6 +455,39 @@ public class Docterlogin extends AppCompatActivity implements GoogleApiClient.On
 
             }
 });
+
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Dialog dialog=new Dialog(Docterlogin.this);
+                dialog.setCancelable(false);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.forgot_pass_dialog);
+                dialog.show();
+
+
+                Button submit = (Button) dialog.findViewById(R.id.submit);
+                progress = (ProgressBar)dialog.findViewById(R.id.progress);
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    //   progress.setVisibility(View.VISIBLE);
+
+
+
+
+
+
+                    }
+                });
+
+
+
+            }
+        });
 
     }
 

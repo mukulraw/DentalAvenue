@@ -175,6 +175,13 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.search)
         {
             Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
+
+            Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+            startActivity(intent);
+
+
+
+
         }
         else if (id == R.id.cart)
         {

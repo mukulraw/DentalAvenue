@@ -54,7 +54,10 @@
         <activity android:name=".Homepage" />
         <activity android:name=".Offers" />
         <activity android:name=".Search" />
-        <activity android:name=".Rating"></activity>
+        <activity android:name=".Rating" />
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search"></activity>
     </application>
 
 </manifest>

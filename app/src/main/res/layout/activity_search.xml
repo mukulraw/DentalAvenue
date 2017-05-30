@@ -10,7 +10,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:id="@+id/edit"
+        android:id="@+id/search"
+        android:drawableEnd="@drawable/ic_search"
          />
 
     <android.support.v7.widget.RecyclerView

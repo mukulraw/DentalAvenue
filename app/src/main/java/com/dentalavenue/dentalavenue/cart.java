@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toolbar;
+
 
 import com.dentalavenue.dentalavenue.viewCartPOJO.CartDatum;
 import com.dentalavenue.dentalavenue.viewCartPOJO.viewCartBean;
