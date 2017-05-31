@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -74,13 +75,16 @@ public class cart extends AppCompatActivity {
 
         bean b = (bean)getApplicationContext();
 
+        total.setText("10000");
         Call<viewCartBean> call = cr.viewCart(b.userId);
+
 
         call.enqueue(new Callback<viewCartBean>() {
             @Override
             public void onResponse(Call<viewCartBean> call, Response<viewCartBean> response) {
 
                 list = response.body().getCartData();
+
 
                 adapter.setGridData(list);
                 progress.setVisibility(View.GONE);

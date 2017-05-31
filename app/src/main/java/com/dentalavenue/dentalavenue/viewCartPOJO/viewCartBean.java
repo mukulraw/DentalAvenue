@@ -8,15 +8,16 @@ import java.util.List;
 
 public class viewCartBean {
 
+
     @SerializedName("cart_data")
     @Expose
     private List<CartDatum> cartData = null;
     @SerializedName("rewardpoint")
     @Expose
-    private Integer rewardpoint;
+    private String rewardpoint;
     @SerializedName("total")
     @Expose
-    private Integer total;
+    private String total;
 
     public List<CartDatum> getCartData() {
         return cartData;
@@ -26,19 +27,19 @@ public class viewCartBean {
         this.cartData = cartData;
     }
 
-    public Integer getRewardpoint() {
+    public String getRewardpoint() {
         return rewardpoint;
     }
 
-    public void setRewardpoint(Integer rewardpoint) {
+    public void setRewardpoint(String rewardpoint) {
         this.rewardpoint = rewardpoint;
     }
 
-    public Integer getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 

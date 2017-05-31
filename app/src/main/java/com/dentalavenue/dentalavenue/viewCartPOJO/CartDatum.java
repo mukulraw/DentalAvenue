@@ -18,6 +18,9 @@ public class CartDatum {
     @SerializedName("product_sku")
     @Expose
     private String productSku;
+    @SerializedName("pro_image")
+    @Expose
+    private String proImage;
     @SerializedName("product_size")
     @Expose
     private String productSize;
@@ -61,6 +64,14 @@ public class CartDatum {
 
     public void setProductSku(String productSku) {
         this.productSku = productSku;
+    }
+
+    public String getProImage() {
+        return proImage;
+    }
+
+    public void setProImage(String proImage) {
+        this.proImage = proImage;
     }
 
     public String getProductSize() {
