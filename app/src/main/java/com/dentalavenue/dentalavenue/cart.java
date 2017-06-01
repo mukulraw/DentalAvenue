@@ -75,8 +75,8 @@ public class cart extends AppCompatActivity {
 
         bean b = (bean)getApplicationContext();
 
-        total.setText("10000");
         Call<viewCartBean> call = cr.viewCart(b.userId);
+        Log.d("sdsaasa",b.userId);
 
 
         call.enqueue(new Callback<viewCartBean>() {
@@ -84,6 +84,7 @@ public class cart extends AppCompatActivity {
             public void onResponse(Call<viewCartBean> call, Response<viewCartBean> response) {
 
                 list = response.body().getCartData();
+
 
 
                 adapter.setGridData(list);

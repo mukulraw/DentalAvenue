@@ -1,5 +1,6 @@
 package com.dentalavenue.dentalavenue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
@@ -15,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import com.dentalavenue.dentalavenue.addCartPOJO.addCartBean;
 import com.dentalavenue.dentalavenue.addWishlistPOJO.addWishlistBean;
 import com.dentalavenue.dentalavenue.singleProductPOJO.singleProductBean;
+import com.dentalavenue.dentalavenue.viewCartPOJO.CartDatum;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -65,6 +68,9 @@ public class Singleproduct extends Fragment {
     List<String> qtyId , qtyQty;
     List<String> sizeId , sizePrice;
     List<String> offerDoctorId , offerDoctorPrice;
+    RelativeLayout layout_rating;
+
+    Wishadapter adapter;
 
     String size , sku , pri , salePrice , offerDoctor , offerDealer = "";
 
@@ -93,6 +99,7 @@ public class Singleproduct extends Fragment {
 
 
 
+
         image = (ImageView) view.findViewById(R.id.image);
 
         minus = (TextView) view.findViewById(R.id.minus);
@@ -110,9 +117,19 @@ public class Singleproduct extends Fragment {
         description = (TextView)view.findViewById(R.id.description);
         spinner = (Spinner)view.findViewById(R.id.spinner);
 
+        layout_rating=(RelativeLayout)view.findViewById(R.id.layout_rating);
+
 
         id = getArguments().getString("id");
 
+        layout_rating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),Reviews.class);
+                intent.putExtra("proId",id);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -221,6 +238,7 @@ public class Singleproduct extends Fragment {
 
                         Toast.makeText(getContext() , response.body().getAddToCart().get(0).getMessage() , Toast.LENGTH_SHORT).show();
 
+
                         progress.setVisibility(View.GONE);
 
                     }
@@ -289,6 +307,7 @@ public class Singleproduct extends Fragment {
                     public void onResponse(Call<addWishlistBean> call, Response<addWishlistBean> response) {
 
                         Toast.makeText(getContext() , response.body().getAddWishlist().get(0).getMessage() , Toast.LENGTH_SHORT).show();
+
 
                         progress.setVisibility(View.GONE);
 

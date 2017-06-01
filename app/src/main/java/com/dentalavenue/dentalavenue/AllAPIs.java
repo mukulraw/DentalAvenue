@@ -1,5 +1,6 @@
 package com.dentalavenue.dentalavenue;
 
+import com.dentalavenue.dentalavenue.AddRatingPOJO.AddRatingBean;
 import com.dentalavenue.dentalavenue.OfferPOJO.OfferBeann;
 import com.dentalavenue.dentalavenue.addCartPOJO.addCartBean;
 import com.dentalavenue.dentalavenue.addWishlistPOJO.addWishlistBean;
@@ -17,6 +18,7 @@ import com.dentalavenue.dentalavenue.singleProductPOJO.singleProductBean;
 import com.dentalavenue.dentalavenue.statePOJO.stateBean;
 import com.dentalavenue.dentalavenue.viewCartPOJO.viewCartBean;
 import com.dentalavenue.dentalavenue.viewRatingPOJO.viewRatingBean;
+import com.dentalavenue.dentalavenue.viewWishlistPOJO.WishlishtDetailsBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -92,6 +94,14 @@ public interface AllAPIs {
     @POST("dental_avenue/app-api/password_change.php")
     Call<ChangePass> changePass(@Part("old_pass") String oldPass, @Part("new_pass") String newPass, @Part("userid") String userId);
 
+
+    @Multipart
+    @POST("dental_avenue/app-api/wishlist_detail.php")
+    Call<WishlishtDetailsBean> wishlist_details(@Part("userid") String userId);
+
+    @Multipart
+    @POST("dental_avenue/app-api/add_rating.php")
+    Call<AddRatingBean> Add_rating(@Part("userid") String userId, @Part("proid") String proId, @Part("comment") String comment, @Part("rate") String rate);
 
 
 }
